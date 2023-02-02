@@ -8,3 +8,8 @@
 -ensure that local storage works with this stack
 -correctly type all of my code
 -write tests to ensure the code is doing what it must do.
+
+
+//TODO: write something later to make sure it cannot add a name if a project already exists
+
+//TODO: put function in onSubmits that will unmount forms

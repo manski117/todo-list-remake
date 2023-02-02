@@ -20,17 +20,23 @@ function App() {
   //currentTask
   const [currentTask, setCurrentTask] = useState(20);
   //all projects
-  const [allProjects, setAllProjects] = useState(300);
+  const [allProjects, setAllProjects] = useState({
+    one: '1',
+    two: '2'
+  });
 
 
-
+  React.useEffect(() => {
+    console.log('new project state just dropped:')
+    console.log(allProjects);
+  }, [allProjects]);
 
 
 
   return (
     <div className="App">
       <Header />
-      <p>From App() {selectedProject} &&& {currentTask} &&& {allProjects}</p>
+      <p>From App() {selectedProject} &&& {currentTask}</p>
       <AllContext.Provider 
       value={{
         allProjects: [allProjects, setAllProjects], 

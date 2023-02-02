@@ -16,7 +16,9 @@ export default function ProjectList(){
     
     function changeGlobalState(){
         // setCurrentTask(prev => prev + 1000);
-        setAllProjects('back to C');
+        setAllProjects('back to X');
+        let newCurrentTask = currentTaskCopy + ' and the next day';
+        setCurrentTask(newCurrentTask);
         // setSelectedProject(prev => prev + ' and more');
     }
     
@@ -27,7 +29,7 @@ export default function ProjectList(){
             <p>project components go here</p>
             <p>{currentTaskCopy}</p>
             <p>{selectedProjectCopy}</p>
-            <p>{allProjectsCopy}</p>
+            
             <button onClick={changeGlobalState} >change state</button>
         </div>
     )

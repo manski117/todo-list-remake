@@ -34,6 +34,7 @@
   --button-task-text-color: #1e1e1e;
   --button-edit-color: #c6c6c6;
   --button-edit-text-color: #5c5c5c;
+  --error-text: #ff0000;
   
 }
 
@@ -159,7 +160,7 @@ Footer h4{
   background-color: var(--sidebar-bg-color);
   display: block;
   padding: 0.5rem;
-  color: #BFE59F;
+  color: var(--button-edit-text-color);
 }
 
 .projects-menu-title{
@@ -213,6 +214,14 @@ p{
 
 
 
+
+/* ##### Dynamic User Feedback ##### */
+.error-feedback{
+  color: var(--error-text);
+  font-style: italic;
+  margin-left: 5px;
+  font-size: 16px;
+}
 
 
 
