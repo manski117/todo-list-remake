@@ -11,4 +11,19 @@ describe("App Component", () =>{
     const {getByRole} = render (<App />);
     expect(getByRole('heading').textContent).toMatch(/first test passes/i);
   })
-})
+});
+
+///////tests to write
+
+
+//local storage loads
+
+//projects load in side bar
+
+//clicking button makes form appear/hide
+
+//if local storage doesn't load, informational text appears
+
+//state in App is updated when form is changed
+
+//all validation happens at once before attempt to render
