@@ -4,10 +4,10 @@ import { Formik, Field, Form, FormikHelpers } from 'formik';
 
 //types
 interface Values {
-    projectName: string;
+    firstName: string;
+    lastName: string;
+    email: string;
   }
-
-
 
 
 export default function ProjectForm(){
@@ -23,7 +23,9 @@ export default function ProjectForm(){
         <div className="temporary-container">
           <Formik
             initialValues={{
-              projectName: ''
+              firstName: "",
+              lastName: "",
+              email: "",
             }}
             onSubmit={(values: Values, { setSubmitting }: FormikHelpers<Values>) => {
               setTimeout(() => {

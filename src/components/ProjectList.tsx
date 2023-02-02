@@ -1,6 +1,8 @@
 import React, {useContext} from "react";
 import { AllContext } from "../App";
 
+//types
+
 
 export default function ProjectList(){
     const {allProjects, selectedProject, currentTask} = React.useContext(AllContext);
