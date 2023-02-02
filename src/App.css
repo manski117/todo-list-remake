@@ -207,6 +207,10 @@ p{
   color: black;
 }
 
+.project-list{
+  flex-direction: column;
+}
+
 
 
 

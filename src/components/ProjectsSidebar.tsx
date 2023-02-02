@@ -1,9 +1,15 @@
-import React from "react";
+import React, {useContext} from "react";
+import { AllContext } from "../App";
+
 //components
 import ProjectList from "./ProjectList";
 import ProjectForm from "./ProjectForm";
 
 export default function ProjectSidebar(){
+    const {allProjects, selectedProject, currentTask} = React.useContext(AllContext);
+    const [allProjectsCopy, setAllProjects] = allProjects;
+    const [selectedProjectCopy, setSelectedProject] = selectedProject;
+    const [currentTaskCopy, setCurrentTask] = currentTask;
 
 
     return(

@@ -4,7 +4,7 @@ import '@testing-library/jest-dom';
 import '@testing-library/react';
 import '@testing-library/user-event';
 import userEvent from '@testing-library/user-event';
-import App from './App';
+import {App} from './App';
 
 describe("App Component", () =>{
   test('renders heading', () =>{

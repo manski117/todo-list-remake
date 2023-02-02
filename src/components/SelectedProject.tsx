@@ -1,9 +1,15 @@
-import React from "react";
+import React, {useContext} from "react";
+import { AllContext } from "../App";
+    
 //components
 import TaskList from "./TaskList";
 import TaskForm from "./TaskForm";
 
 export default function SelectedProject(){
+    const {allProjects, selectedProject, currentTask} = React.useContext(AllContext);
+    const [allProjectsCopy, setAllProjects] = allProjects;
+    const [selectedProjectCopy, setSelectedProject] = selectedProject;
+    const [currentTaskCopy, setCurrentTask] = currentTask;
 
 
     return(
