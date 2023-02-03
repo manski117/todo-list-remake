@@ -13,10 +13,10 @@ export default function ProjectList(){
     
     
     // setCurrentTask(prev => prev + 1);
-    
+     
     function changeGlobalState(){
         // setCurrentTask(prev => prev + 1000);
-        setAllProjects('back to X');
+        // setAllProjects('back to X');
         let newCurrentTask = currentTaskCopy + ' and the next day';
         setCurrentTask(newCurrentTask);
         // setSelectedProject(prev => prev + ' and more');

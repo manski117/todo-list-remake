@@ -10,20 +10,32 @@ import './App.css';
 //types
 
 
+type TaskObject = {
+  complete: boolean;
+  date: string;
+  details: string;
+  title: string;
+}
+
+type ProjectObject = {
+  title: string;
+  tasks: TaskObject; 
+}
+
+
+
+
 //create a context object to push context deep into component tree
 const AllContext = React.createContext<any>(null);
 
 
 function App() {
   //delcare state for selected project
-  const [selectedProject, setSelectedProject] = useState(1);
+  const [selectedProject, setSelectedProject] = useState(12);
   //currentTask
-  const [currentTask, setCurrentTask] = useState(20);
+  const [currentTask, setCurrentTask] = useState(15);
   //all projects
-  const [allProjects, setAllProjects] = useState({
-    one: '1',
-    two: '2'
-  });
+  const [allProjects, setAllProjects] = useState<ProjectObject | null>(null);
 
 
   React.useEffect(() => {
@@ -31,12 +43,16 @@ function App() {
     console.log(allProjects);
   }, [allProjects]);
 
+  function checkStateForTests(currentTask: number){
+    return currentTask;
+  }
+
 
 
   return (
     <div className="App">
       <Header />
-      <p>From App() {selectedProject} &&& {currentTask}</p>
+      <p>{currentTask}</p>
       <AllContext.Provider 
       value={{
         allProjects: [allProjects, setAllProjects], 
