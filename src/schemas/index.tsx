@@ -1,4 +1,5 @@
 import * as yup from "yup";
+import parse from "date-fns/parse";
 
 //setup regex variables
 
@@ -13,17 +14,25 @@ export const projectNameSchema = yup.object().shape({
     //TODO: write something later to make sure it cannot add a name if a project already exists
 });
 
-export const firstNameSchema = yup.object().shape({
+export const taskFormSchema = yup.object().shape({
     //put the different values here you want to validate for
-    email: yup.string().email('i can say what I want here...').required("Required"),
-    firstName: yup
+    
+    title: yup
     .string()
     .min(3)
     .required("Required"),
-    lastName: yup
-    .string()
-    .min(1)
-    .required("Required"),
+    date: yup.date()
+    .transform(function (value, originalValue) {
+      if (this.isType(value)) {
+        return value;
+      }
+      const result = parse(originalValue, "MM-dd-yyyy", new Date());
+      return result;
+    })
+    .typeError("please enter a valid date")
+    .required("Required")
+    .min("1969-11-13", "Date is too early"),
+    details: yup.string(),
     
     
 });

@@ -33,6 +33,8 @@ export default function ProjectForm(){
         }
     }
 
+    ///test functions
+
     class Task {
         title: string;
         date: string;
@@ -76,8 +78,6 @@ export default function ProjectForm(){
     function handleClick(){
         sendTaskToProject(mockTask, 'pikachu');
     }
-
-
 
 
     return (
