@@ -31,7 +31,7 @@ const AllContext = React.createContext<any>(null);
 
 function App() {
   //delcare state for selected project
-  const [selectedProject, setSelectedProject] = useState<string>('test1');
+  const [selectedProject, setSelectedProject] = useState<string | null>(null);
   //currentTask
   const [currentTask, setCurrentTask] = useState(15);
   //all projects
@@ -50,7 +50,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <p>{currentTask}, {selectedProject}</p>
+      <p>Root state: {currentTask}, {selectedProject}</p>
       <AllContext.Provider 
       value={{
         allProjects: [allProjects, setAllProjects], 
