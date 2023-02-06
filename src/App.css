@@ -32,7 +32,7 @@
   --button-project-text-color: #ffffff;
   --button-task-color: #e1d52b;
   --button-task-text-color: #1e1e1e;
-  --button-edit-color: #c6c6c6;
+  --button-edit-color: #949494;
   --button-edit-text-color: #5c5c5c;
   --error-text: #ff0000;
   
@@ -187,6 +187,31 @@ Footer h4{
   margin-left: 1rem;
   margin-right: 1rem;
   color: var(--project-list-item-text-color);
+  
+}
+
+.project-list{
+  gap: 10px;
+}
+
+.project-menu-item{
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--button-edit-color);
+  border-radius: 20px;
+  
+}
+.project-item-heading{
+  font-size: 1.3rem;
+  /* font-family: 'Open Sans', sans-serif; */
+  font-family: 'PT Sans', sans-serif;
+  /* font-family: 'Roboto', sans-serif; */
+}
+
+.project-item-heading:hover, .project-item-heading:focus{
+  text-shadow: 1px 1px 18px rgba(255, 255, 255, 0.757);
+  cursor: pointer;
+
 }
 
 #add-new-project {
@@ -212,8 +237,22 @@ p{
   flex-direction: column;
 }
 
+/* ##### Buttons, Icons and clickable images ##### */
+.icon-btn{
+  width: 35px;
+  height: 35px;
+  transform: translateY(3px);
+  cursor: pointer;
+}
 
+img.icon-img{
+  width:40px;
+  height:40px;
+}
 
+.icon-btn:hover{
+  transform:scale(110%);
+}
 
 /* ##### Dynamic User Feedback ##### */
 .error-feedback{
@@ -222,6 +261,8 @@ p{
   margin-left: 5px;
   font-size: 16px;
 }
+
+
 
 
 

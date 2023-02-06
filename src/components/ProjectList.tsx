@@ -2,8 +2,6 @@ import React, {useContext} from "react";
 import { AllContext } from "../App";
 import ProjectMenuItem from "./ProjectMenuItem";
 
-//types
-
 
 export default function ProjectList(){
     const {allProjects, selectedProject, currentTask} = React.useContext(AllContext);
@@ -20,11 +18,11 @@ export default function ProjectList(){
     React.useEffect(() => {
         console.log('Hello from the Project List component!', allProjectsCopy);
         if(allProjectsCopy !== null){
-            console.log('allProjectsCopy updated and is NOT null.')
+            console.log('allProjectsCopy updated and is NOT null.');
             projects = Object.keys(allProjectsCopy);
             let displayProjectsUpdate = projects.map((item: any)=>(
                 <div key={item}>
-                    <ProjectMenuItem data={item} data2={item} />
+                    <ProjectMenuItem projectName={item} />
                 </div>
                 )
             );
@@ -40,8 +38,7 @@ export default function ProjectList(){
         <div className="project-list flexbox">
             <p>project components go here</p>
             {(displayProjects !== null) ? displayProjects : null}
-            <p>{currentTaskCopy}</p>
-            <p>{selectedProjectCopy}</p>
+            
         </div>
     )
 }
