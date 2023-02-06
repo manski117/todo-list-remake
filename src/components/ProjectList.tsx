@@ -16,9 +16,9 @@ export default function ProjectList(){
 
     //run this only when state updates
     React.useEffect(() => {
-        console.log('Hello from the Project List component!', allProjectsCopy);
+        // console.log('Hello from the Project List component!', allProjectsCopy);
         if(allProjectsCopy !== null){
-            console.log('allProjectsCopy updated and is NOT null.');
+            // console.log('allProjectsCopy updated and is NOT null.');
             projects = Object.keys(allProjectsCopy);
             let displayProjectsUpdate = projects.map((item: any)=>(
                 <div key={item}>

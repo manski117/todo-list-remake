@@ -15,7 +15,7 @@ export default function SelectedProject(){
     return(
         <div id="current-project" className="flexbox">
             <div className="selected-project-header-container">
-                <h2 className="selected-project-header">Select a project</h2>
+                <h2 className="selected-project-header">{selectedProjectCopy}</h2>
             </div>
             <div className="project-tasks flexbox">
                 <TaskList />

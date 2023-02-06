@@ -44,9 +44,6 @@ function App() {
   }, [allProjects]);
 
 
-
-
-
   return (
     <div className="App">
       <Header />

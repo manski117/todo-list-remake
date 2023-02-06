@@ -46,6 +46,7 @@ export default function TaskForm(){
       //send it to nested project in state that matches the name
       tasksToUpdate[`${data.title}`] = newTask;
       newAllProjects[`${projectKey}`].tasks = tasksToUpdate;
+      console.log('sendTaskToProject()',newTask, newAllProjects, tasksToUpdate);
       setAllProjects(newAllProjects); 
       
   }
@@ -64,7 +65,9 @@ export default function TaskForm(){
             validationSchema={taskFormSchema}
             onSubmit={(values: Values, { setSubmitting, resetForm }: FormikHelpers<Values>) => {
               setTimeout(() => {
-                // alert(JSON.stringify(values, null, 2));
+                alert(JSON.stringify(values, null, 2));
+                console.log(JSON.stringify(values, null, 2));
+                // console.log(JSON.stringify(values, null, 2));
                 sendTaskToProject(values, selectedProjectCopy);
                 setSubmitting(false);
               }, 500);
