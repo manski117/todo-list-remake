@@ -36,7 +36,6 @@ export default function EditProjectForm(props: any){
             this.tasks = {};
         }
     }
-
     //local schema for conditional validation
     // function conditionalEditSchema(stateValue: any){
     //     //it cant just test itself, but every obj mike!!!!

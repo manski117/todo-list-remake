@@ -19,8 +19,9 @@ export const projectNameSchema = yup.object().shape({
 
 export function conditionalEditProjectNameSchema(stateValue: any){
   //it cant just test itself, but every obj mike!!!!
-  let keys = Object.keys(stateValue);
+  
   if (!(stateValue === null)) {
+      let keys = Object.keys(stateValue);
       return yup.object({
         projectName: yup
         .string()

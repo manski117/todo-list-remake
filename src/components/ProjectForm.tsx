@@ -2,6 +2,8 @@ import React, {useContext} from "react";
 import { AllContext } from "../App";
 import { Formik, Field, Form, FormikHelpers, ErrorMessage } from 'formik';
 import { projectNameSchema } from "../schemas";
+import { conditionalEditProjectNameSchema } from "../schemas";
+import * as yup from "yup";
 
 //types
 interface Values {
@@ -35,6 +37,45 @@ export default function ProjectForm(props: any){
 
     ///test functions
 
+    let localProjectNameSchema = conditionalEditProjectNameSchema(allProjectsCopy);
+
+
+    return (
+        <div className="temporary-container">
+          <Formik
+            initialValues={{
+              projectName: ''
+            }}
+            validationSchema={localProjectNameSchema}
+            onSubmit={(values: Values, { setSubmitting, resetForm }: FormikHelpers<Values>) => {
+              setTimeout(() => {
+                // alert(JSON.stringify(values, null, 2));
+                // sendProjectNameToState(makeNewProject(values.projectName));
+                sendProjectNameToState(values);
+                // makeNewProject(values.projectName);
+                setSubmitting(false);
+              }, 500);
+              resetForm();
+              //TODO: put function here that will unmount form
+              
+            }}
+          >
+            <Form>
+              <label htmlFor="projectName">Project Name</label>
+              <Field id="projectName" name="projectName" placeholder="My Project" />
+              <ErrorMessage name="projectName">{msg => <div className="error-feedback">{msg}</div>}</ErrorMessage>
+              
+              <button type="submit">Submit</button>
+            </Form>
+          </Formik>
+          {/* TODO: put a close button here */}
+        </div>
+      );
+}
+
+
+
+/*
     class Task {
         title: string;
         date: string;
@@ -78,37 +119,4 @@ export default function ProjectForm(props: any){
     function handleClick(){
         sendTaskToProject(mockTask, 'pikachu');
     }
-
-
-    return (
-        <div className="temporary-container">
-          <Formik
-            initialValues={{
-              projectName: ''
-            }}
-            validationSchema={projectNameSchema}
-            onSubmit={(values: Values, { setSubmitting, resetForm }: FormikHelpers<Values>) => {
-              setTimeout(() => {
-                // alert(JSON.stringify(values, null, 2));
-                // sendProjectNameToState(makeNewProject(values.projectName));
-                sendProjectNameToState(values);
-                // makeNewProject(values.projectName);
-                setSubmitting(false);
-              }, 500);
-              resetForm();
-              //TODO: put function here that will unmount form
-              
-            }}
-          >
-            <Form>
-              <label htmlFor="projectName">Project Name</label>
-              <Field id="projectName" name="projectName" placeholder="My Project" />
-              <ErrorMessage name="projectName">{msg => <div className="error-feedback">{msg}</div>}</ErrorMessage>
-              
-              <button type="submit">Submit</button>
-            </Form>
-          </Formik>
-          <button onClick={handleClick} >click here to add a test task</button>
-        </div>
-      );
-}
+    */
