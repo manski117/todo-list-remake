@@ -12,6 +12,13 @@ export default function ProjectMenuItem(props: any) {
 
     function handleEditClick(){
         alert(`you clicked the edit icon of ${props.projectName}`);
+        //fucntion takes project name as a string
+        //renders project form component with this string as its initial value. 
+        // but doesn't crash if it's the SAME value.
+    }
+
+    function editProjectForm(projectName: string){
+        //todo: finish this
     }
 
     function handleTitleClick(){

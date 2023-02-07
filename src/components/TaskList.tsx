@@ -115,7 +115,7 @@ export default function TaskList(){
             setDisplayTasks(displayTasksUpdate);
 
             } else {
-                //what to run if there are no tasks to load
+                //TODO: decide what to run if there are no tasks to load
                 console.log('tasks empty for existing project, so loading from mock');
                 mockJSX();
             }
@@ -126,7 +126,7 @@ export default function TaskList(){
             mockJSX();
 
         }
-      }, [allProjectsCopy]);
+      }, [allProjectsCopy, selectedProjectCopy]);
 
 
 

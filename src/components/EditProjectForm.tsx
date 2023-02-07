@@ -9,11 +9,12 @@ interface Values {
   }
 
 
-export default function ProjectForm(props: any){
+export default function EditProjectForm(props: any){
     const {allProjects, selectedProject, currentTask} = React.useContext(AllContext);
     const [allProjectsCopy, setAllProjects] = allProjects;
     const [selectedProjectCopy, setSelectedProject] = selectedProject;
     const [currentTaskCopy, setCurrentTask] = currentTask;
+    const [isMounted, setIsMounted] = React.useState<boolean>(true);
 
     function sendProjectNameToState(data: Values){
         let newAllProjects = {...allProjectsCopy};
@@ -33,50 +34,20 @@ export default function ProjectForm(props: any){
         }
     }
 
-    ///test functions
+    /*TODO Tuesday:
+    -finish writing component
+    -make this component have a close button that unmounts itself
+    -parent component will have the callback function
+    -somehow make it populate its initial value from the project state
+    -link it to the "editProjectForm" function in ProjectMenuItem
+    -do something similar for tasks (make a task edit form)
+    -fix the name collision problem (check and see if stack overflow answered hopefully)
+    -rest should be easy, all css from there and hamburger menu item lol
+    */
 
-    class Task {
-        title: string;
-        date: string;
-        details: string;
-        complete: boolean;
-
-        constructor(title: string, date: string, details: string, complete: boolean=false){
-            this.title=title;
-            this.date=date;
-            this.complete=complete;
-            this.details=details;
-        }
-    }
-    
-    let mockTask = {
-        title:'go shopping',
-        date:'10/29/2020',
-        details:'long string here',
-        complete: false
-    }
-
-    function sendTaskToProject(data: any, projectKey: string){
-
-            //match up with name
-        let newAllProjects = {...allProjectsCopy};
-        let projectToUpdate = newAllProjects[`${projectKey}`];
-        let tasksToUpdate = {...projectToUpdate.tasks};
-
-        
-
-        //make a task object
-        let newTask = new Task(data.title, data.date, data.details, data.complete);
-
-        //send it to nested project in state that matches the name
-        tasksToUpdate[`${data.title}`] = newTask;
-        newAllProjects[`${projectKey}`].tasks = tasksToUpdate;
-        setAllProjects(newAllProjects); 
-        
-    }
 
     function handleClick(){
-        sendTaskToProject(mockTask, 'pikachu');
+        //todo write this
     }
 
 

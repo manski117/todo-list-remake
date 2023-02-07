@@ -1,17 +1,20 @@
 import * as yup from "yup";
 import parse from "date-fns/parse";
+// import React, {useContext} from "react";
+// import { AllContext } from "../App";
 
-//setup regex variables
+
+//try useContext to read state declared in App.tsx
+// const {allProjects, selectedProject, currentTask} = React.useContext(AllContext);
+// const [allProjectsCopy, setAllProjects] = allProjects;
+// let keys = Object.keys(allProjectsCopy);
 
 
-//schema is equal to an object that we setup with this chained shape method
 export const projectNameSchema = yup.object().shape({
-    //put the different values here you want to validate for
     projectName: yup
     .string()
     .min(2)
     .required("Required"),
-    //TODO: write something later to make sure it cannot add a name if a project already exists
 });
 
 export const taskFormSchema = yup.object().shape({
@@ -33,6 +36,9 @@ export const taskFormSchema = yup.object().shape({
     .required("Required")
     .min("1969-11-13", "Date is too early"),
     details: yup.string(),
-    
+    //TODO: write something later to make sure it cannot add a name if a project already exists
     
 });
+
+//.test('mike-test', 'Mike detected', value => !(value === 'mike'))
+//.test('project-exists', 'Project already exists', value => !(keys.includes(value)))
