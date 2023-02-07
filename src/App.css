@@ -238,6 +238,49 @@ p{
   flex-direction: column;
 }
 
+
+/* ##### FORM LAYOUT ##### */
+.edit-form-project-name{
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 5px;
+  margin-bottom: 8px;
+  height: fit-content;
+  width: 100%;
+  min-height: 100px;
+  
+  background-color: var(--subhead-project-color);
+  padding: 5px;
+  border-radius: 10px;
+  
+}
+
+.close-btn{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  border-radius: 25px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.Field{
+  position: relative;
+  
+}
+.Form{
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+.error-msg{
+  position: absolute;
+}
+
+
 /* ##### Buttons, Icons and clickable images ##### */
 .icon-btn{
   width: 35px;

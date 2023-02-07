@@ -10,6 +10,13 @@ export default function ProjectSidebar(){
     const [allProjectsCopy, setAllProjects] = allProjects;
     const [selectedProjectCopy, setSelectedProject] = selectedProject;
     const [currentTaskCopy, setCurrentTask] = currentTask;
+    //local state and vars
+    const [newFormOpen, setNewFormOpen] = React.useState<boolean>(false);
+    
+    //local functions
+    function toggleNewForm(){
+        setNewFormOpen(!newFormOpen);
+    }
 
 
     return(
@@ -19,8 +26,8 @@ export default function ProjectSidebar(){
                 <ProjectList />
             </div>
 
-            <button id="add-new-project" className="form-hide-button flexbox">New Project</button>
-            <ProjectForm />
+            <button onClick={toggleNewForm} id="add-new-project" className="form-hide-button flexbox">New Project</button>
+            {newFormOpen ? <ProjectForm /> : null}
 
         </aside>
     )

@@ -11,7 +11,7 @@ export default function SelectedProject(){
     const [selectedProjectCopy, setSelectedProject] = selectedProject;
     const [currentTaskCopy, setCurrentTask] = currentTask;
 
-
+    
     return(
         <div id="current-project" className="flexbox">
             <div className="selected-project-header-container">

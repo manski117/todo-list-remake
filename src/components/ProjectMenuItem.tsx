@@ -14,7 +14,7 @@ export default function ProjectMenuItem(props: any) {
 
     //variables and objects
     let projectToEdit = props.projectName;
-    let editProjectComponent = <EditProjectForm projectName={projectToEdit} handleClick={toggleEditForm} />
+    let editProjectComponent = <EditProjectForm oldProjectName={projectToEdit} handleClick={toggleEditForm} />
 
 
     function handleEditClick(){

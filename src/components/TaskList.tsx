@@ -78,8 +78,7 @@ export default function TaskList(){
             setDisplayTasks(displayTasksUpdate);
     }
 
-    //generate components
-    //run this only when state updates
+    //functions to update components
     function isObjEmpty (obj: any) {
         console.log(obj);
         if (obj === undefined || obj === null){
@@ -91,7 +90,8 @@ export default function TaskList(){
         }
          
     }
-
+    //generate components
+    //run this only when state updates
     React.useEffect(() => {
         
         console.log('Hello from the Project List component!', allProjectsCopy);
@@ -129,23 +129,6 @@ export default function TaskList(){
       }, [allProjectsCopy, selectedProjectCopy]);
 
 
-
-    //   React.useEffect(() => {
-    //     console.log('Hello from the Project List component!', allProjectsCopy);
-    //     if(allProjectsCopy !== null){
-    //         console.log('initial render of TaskList.');
-    //         tasks = Object.keys(mockProjects[`king`]);
-    //         let displayTasksUpdate = tasks.map((item: any)=>(
-    //             <div key={item}>
-    //                 <TaskMenuItem taskName={item} />
-    //             </div>
-    //             )
-    //         );
-    //         setDisplayTasks(displayTasksUpdate);
-    //     } else{
-
-    //     }
-    //   }, []);
 
 
     

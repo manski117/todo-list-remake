@@ -10,6 +10,7 @@
 -write tests to ensure the code is doing what it must do.
 
 
-//TODO: write something later to make sure it cannot add a name if a project already exists
+//TODO: write something later to make sure it cannot add a taks if a that task already exists in said project
 
-//TODO: put function in onSubmits that will unmount forms
+
+//TODO: make sure that the EDIT project forms actually change the existing project in state when a new name is submitted. Right now they just make new projects, but they should overrite the old ones.

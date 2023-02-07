@@ -1,13 +1,5 @@
 import * as yup from "yup";
 import parse from "date-fns/parse";
-// import React, {useContext} from "react";
-// import { AllContext } from "../App";
-
-
-//try useContext to read state declared in App.tsx
-// const {allProjects, selectedProject, currentTask} = React.useContext(AllContext);
-// const [allProjectsCopy, setAllProjects] = allProjects;
-// let keys = Object.keys(allProjectsCopy);
 
 
 export const projectNameSchema = yup.object().shape({
@@ -18,7 +10,6 @@ export const projectNameSchema = yup.object().shape({
 });
 
 export function conditionalEditProjectNameSchema(stateValue: any){
-  //it cant just test itself, but every obj mike!!!!
   
   if (!(stateValue === null)) {
       let keys = Object.keys(stateValue);
@@ -36,7 +27,6 @@ export function conditionalEditProjectNameSchema(stateValue: any){
         .required("Required"),
     })
   }
-
   
 }
 

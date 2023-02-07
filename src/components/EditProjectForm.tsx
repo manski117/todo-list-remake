@@ -17,14 +17,36 @@ export default function EditProjectForm(props: any){
     const [allProjectsCopy, setAllProjects] = allProjects;
     const [selectedProjectCopy, setSelectedProject] = selectedProject;
     const [currentTaskCopy, setCurrentTask] = currentTask;
-    const [isMounted, setIsMounted] = React.useState<boolean>(true);
+    
 
     function sendProjectNameToState(data: Values){
         let newAllProjects = {...allProjectsCopy};
-        let newProject = new Project(`${data.projectName}`)
+        let newProject = new Project(`${data.projectName}`);
         newAllProjects[`${data.projectName}`] = newProject;
         console.log('newAllProjects,', newAllProjects);
         setAllProjects(newAllProjects);        
+    }
+
+    function updateProjectNameInState(data: Values){
+      //changes only the project name in state.
+      //keeps everything else, including tasks
+
+      //create a copy of the state
+      let newAllProjects = {...allProjectsCopy};
+
+      //grab old project tasks using prop
+      let oldProjectTasks = newAllProjects[`${props.oldProjectName}`].tasks;
+
+      //delete old project in the object
+      delete newAllProjects[`${props.oldProjectName}`];
+
+      //add project with updated name back to new state object
+      let updatedProject = new Project(`${data.projectName}`);
+      updatedProject.tasks = oldProjectTasks;
+      newAllProjects[`${data.projectName}`] = updatedProject;
+
+      //set state equal to new object
+      setAllProjects(newAllProjects); 
     }
 
     class Project {
@@ -36,35 +58,14 @@ export default function EditProjectForm(props: any){
             this.tasks = {};
         }
     }
-    //local schema for conditional validation
-    // function conditionalEditSchema(stateValue: any){
-    //     //it cant just test itself, but every obj mike!!!!
-    //     let keys = Object.keys(stateValue);
-    //     if (!(stateValue === null)) {
-    //         return yup.object({
-    //           projectName: yup
-    //           .string()
-    //           .min(2).test('project-exists', 'Project already exists', value => !(keys.includes(value as string)))
-    //           .required("Required"),
-    //         })
-    //     } else{
-    //       return yup.object({
-    //         projectName: yup
-    //           .string()
-    //           .min(2)
-    //           .required("Required"),
-    //       })
-    //     }
-      
-        
-    // }
+
 
     let editProjectSchema = conditionalEditProjectNameSchema(allProjectsCopy);
 
 
     return (
         <div className="edit-form-project-name">
-          <button onClick={props.handleClick} aria-label="Close Form">X</button>
+          <button onClick={props.handleClick} className='close-btn' aria-label="Close Form">X</button>
           <Formik
             initialValues={{
               projectName: ''
@@ -74,7 +75,8 @@ export default function EditProjectForm(props: any){
               setTimeout(() => {
                 // alert(JSON.stringify(values, null, 2));
                 // sendProjectNameToState(makeNewProject(values.projectName));
-                sendProjectNameToState(values);
+                // sendProjectNameToState(values);
+                updateProjectNameInState(values);
                 // makeNewProject(values.projectName);
                 setSubmitting(false);
               }, 500);
@@ -82,13 +84,15 @@ export default function EditProjectForm(props: any){
               //TODO: put function here that will unmount form
               
             }}
+            
           >
-            <Form>
+            <Form className="Form formik-form">
               <label htmlFor="projectName">Edit Project Name</label>
-              <Field id="projectName" name="projectName" placeholder="Give your project a new name" />
-              <ErrorMessage name="projectName">{msg => <div className="error-feedback">{msg}</div>}</ErrorMessage>
-              
+              <Field className='Field text-input' id="projectName" name="projectName" placeholder="Give your project a new name" />
               <button type="submit">&#9989;</button>
+              <ErrorMessage name="projectName">{msg => <div className="error-feedback error-msg">{msg}</div>}</ErrorMessage>
+              
+              
             </Form>
           </Formik>
         </div>
