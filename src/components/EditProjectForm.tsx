@@ -34,25 +34,12 @@ export default function EditProjectForm(props: any){
         }
     }
 
-    /*TODO Tuesday:
-    -finish writing component
-    -make this component have a close button that unmounts itself
-    -parent component will have the callback function
-    -somehow make it populate its initial value from the project state
-    -link it to the "editProjectForm" function in ProjectMenuItem
-    -do something similar for tasks (make a task edit form)
-    -fix the name collision problem (check and see if stack overflow answered hopefully)
-    -rest should be easy, all css from there and hamburger menu item lol
-    */
 
-
-    function handleClick(){
-        //todo write this
-    }
 
 
     return (
-        <div className="temporary-container">
+        <div className="edit-form-project-name">
+          <button onClick={props.handleClick} aria-label="Close Form">X</button>
           <Formik
             initialValues={{
               projectName: ''
@@ -79,7 +66,17 @@ export default function EditProjectForm(props: any){
               <button type="submit">Submit</button>
             </Form>
           </Formik>
-          <button onClick={handleClick} >click here to add a test task</button>
         </div>
       );
 }
+
+/*TODO Tuesday:
+    -finish writing component
+    -make this component have a close button that unmounts itself
+    -parent component will have the callback function
+    -somehow make it populate its initial value from the project state
+    -link it to the "editProjectForm" function in ProjectMenuItem
+    -do something similar for tasks (make a task edit form)
+    -fix the name collision problem (check and see if stack overflow answered hopefully)
+    -rest should be easy, all css from there and hamburger menu item lol
+    */
