@@ -17,6 +17,28 @@ export const projectNameSchema = yup.object().shape({
     .required("Required"),
 });
 
+export function conditionalEditProjectNameSchema(stateValue: any){
+  //it cant just test itself, but every obj mike!!!!
+  let keys = Object.keys(stateValue);
+  if (!(stateValue === null)) {
+      return yup.object({
+        projectName: yup
+        .string()
+        .min(2).test('project-exists', 'Project already exists', value => !(keys.includes(value as string)))
+        .required("Required"),
+      })
+  } else{
+    return yup.object({
+      projectName: yup
+        .string()
+        .min(2)
+        .required("Required"),
+    })
+  }
+
+  
+}
+
 export const taskFormSchema = yup.object().shape({
     //put the different values here you want to validate for
     
@@ -42,3 +64,4 @@ export const taskFormSchema = yup.object().shape({
 
 //.test('mike-test', 'Mike detected', value => !(value === 'mike'))
 //.test('project-exists', 'Project already exists', value => !(keys.includes(value)))
+//.test('project-exists', 'Project already exists', value => !(value === stateValue))

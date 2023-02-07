@@ -1,7 +1,10 @@
 import React, {useContext} from "react";
 import { AllContext } from "../App";
 import { Formik, Field, Form, FormikHelpers, ErrorMessage } from 'formik';
+//schemas
+import { conditionalEditProjectNameSchema } from "../schemas";
 import { projectNameSchema } from "../schemas";
+import * as yup from "yup";
 
 //types
 interface Values {
@@ -34,7 +37,30 @@ export default function EditProjectForm(props: any){
         }
     }
 
+    //local schema for conditional validation
+    // function conditionalEditSchema(stateValue: any){
+    //     //it cant just test itself, but every obj mike!!!!
+    //     let keys = Object.keys(stateValue);
+    //     if (!(stateValue === null)) {
+    //         return yup.object({
+    //           projectName: yup
+    //           .string()
+    //           .min(2).test('project-exists', 'Project already exists', value => !(keys.includes(value as string)))
+    //           .required("Required"),
+    //         })
+    //     } else{
+    //       return yup.object({
+    //         projectName: yup
+    //           .string()
+    //           .min(2)
+    //           .required("Required"),
+    //       })
+    //     }
+      
+        
+    // }
 
+    let editProjectSchema = conditionalEditProjectNameSchema(allProjectsCopy);
 
 
     return (
@@ -44,7 +70,7 @@ export default function EditProjectForm(props: any){
             initialValues={{
               projectName: ''
             }}
-            validationSchema={projectNameSchema}
+            validationSchema={editProjectSchema}
             onSubmit={(values: Values, { setSubmitting, resetForm }: FormikHelpers<Values>) => {
               setTimeout(() => {
                 // alert(JSON.stringify(values, null, 2));
@@ -59,11 +85,11 @@ export default function EditProjectForm(props: any){
             }}
           >
             <Form>
-              <label htmlFor="projectName">Project Name</label>
-              <Field id="projectName" name="projectName" placeholder="My Project" />
+              <label htmlFor="projectName">Edit Project Name</label>
+              <Field id="projectName" name="projectName" placeholder="Give your project a new name" />
               <ErrorMessage name="projectName">{msg => <div className="error-feedback">{msg}</div>}</ErrorMessage>
               
-              <button type="submit">Submit</button>
+              <button type="submit">&#9989;</button>
             </Form>
           </Formik>
         </div>
@@ -71,9 +97,7 @@ export default function EditProjectForm(props: any){
 }
 
 /*TODO Tuesday:
-    -finish writing component
-    -make this component have a close button that unmounts itself
-    -parent component will have the callback function
+    
     -somehow make it populate its initial value from the project state
     -link it to the "editProjectForm" function in ProjectMenuItem
     -do something similar for tasks (make a task edit form)
