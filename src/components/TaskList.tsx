@@ -90,6 +90,8 @@ export default function TaskList(){
         }
          
     }
+
+
     //generate components
     //run this only when state updates
     React.useEffect(() => {
@@ -128,10 +130,6 @@ export default function TaskList(){
         }
       }, [allProjectsCopy, selectedProjectCopy]);
 
-
-
-
-    
 
     return(
         <div className="project-tasks flexbox">

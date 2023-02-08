@@ -130,6 +130,40 @@ Footer h4{
   
 }
 
+.task-item-container{
+
+  background-color: var(--button-edit-color);
+  border-radius: 20px;
+  padding: 10px;
+  position: relative;
+}
+
+.task-menu-item{
+  flex-direction: column;
+  justify-content: space-between;
+    
+}
+
+.task-info-container, .task-details-container{
+  width: 90%;
+}
+
+.task-info-container{
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-info-container h3{
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.task-details-container{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 #add-new-task{
   justify-content: center;
   align-items: center;
@@ -257,6 +291,7 @@ p{
   
 }
 
+
 .close-btn{
   position: absolute;
   top: 5px;
@@ -274,18 +309,44 @@ p{
 .Form{
   margin-left: 10px;
   margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.Field.date-input, .Field.task-input{
+  width: 100px;
+}
+
+.details-input{
+  width: 90%;
+  height: fit-content;
 }
 
 .error-msg{
   position: absolute;
+  
 }
 
 
 /* ##### Buttons, Icons and clickable images ##### */
+.form-edit-btn{
+  width: 90%;
+  cursor: pointer;
+}
+
 .icon-btn{
   width: 35px;
   height: 35px;
   transform: translateY(3px);
+  cursor: pointer;
+}
+
+.edit-icon{
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 3px;
+  right: 3px;
   cursor: pointer;
 }
 
