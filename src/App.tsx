@@ -17,7 +17,7 @@ type TaskObject = {
   title: string;
 }
 
-type ProjectObject = {
+export type ProjectObject = {
   title: string;
   tasks: TaskObject; 
 }

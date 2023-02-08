@@ -2,6 +2,9 @@ import React, {useContext} from "react";
 import { AllContext } from "../App";
 import { Formik, Field, Form, FormikHelpers, ErrorMessage } from 'formik';
 import { taskFormSchema } from "../schemas";
+//schemas
+import * as yup from "yup";
+import { conditionalEditTaskSchema } from "../schemas";
 
 //types
 interface Values {
@@ -30,7 +33,7 @@ export default function EditTaskForm(props: any){
           this.complete=complete;
           this.details=details;
       }
-  }
+    }
   
     function sendTaskToProject(data: any, projectKey: string){
 
@@ -49,8 +52,9 @@ export default function EditTaskForm(props: any){
       console.log('sendTaskToProject()',newTask, newAllProjects, tasksToUpdate);
       setAllProjects(newAllProjects); 
       
-  }
+    }
 
+    let taskFormEditSchema = conditionalEditTaskSchema(allProjectsCopy, selectedProjectCopy, props.taskName )
 
     return(
         <div className="task-form">
@@ -61,7 +65,7 @@ export default function EditTaskForm(props: any){
               details: '',
               complete: false,
             }}
-            validationSchema={taskFormSchema}
+            validationSchema={taskFormEditSchema}
             onSubmit={(values: Values, { setSubmitting, resetForm }: FormikHelpers<Values>) => {
               setTimeout(() => {
                 alert(JSON.stringify(values, null, 2));
@@ -113,3 +117,72 @@ export default function EditTaskForm(props: any){
     )
 }
 
+/*
+let mockProjects = {
+    "king": {
+        "title": "king",
+        "tasks": {
+"feather1": {
+    "title": "feather1",
+    "date": "07-04-2032",
+    "details": "this should be the first task inside of feather project",
+    "complete": false
+},
+"feather2": {
+    "title": "feather2",
+    "date": "11-12-2002",
+    "details": "this should be the second task inside of feather project",
+    "complete": true
+}
+}
+    },
+    "feather": {
+        "title": "feather",
+        "tasks": {
+"feather1": {
+    "title": "feather1",
+    "date": "07-04-2032",
+    "details": "this should be the first task inside of feather project",
+    "complete": false
+},
+"feather2": {
+    "title": "feather2",
+    "date": "11-12-2002",
+    "details": "this should be the second task inside of feather project",
+    "complete": true
+}
+}
+    },
+    "naniii": {
+        "title": "naniii",
+        "tasks": {
+"feather1": {
+    "title": "feather1",
+    "date": "07-04-2032",
+    "details": "this should be the first task inside of feather project",
+    "complete": false
+},
+"feather2": {
+    "title": "feather2",
+    "date": "11-12-2002",
+    "details": "this should be the second task inside of feather project",
+    "complete": true
+}
+}
+    }
+}
+let purposelyNull = null;
+
+function getTaskTitles(mockProjects, projectName) {
+    if (mockProjects === null) return [];
+    let project = mockProjects[projectName];
+    if (!project) return [];
+
+    let { tasks } = project;
+    return Object.values(tasks).map(task => task.title);
+}
+let test1 = getTaskTitles(mockProjects, 'naniii');
+let test2 = getTaskTitles(purposelyNull, 'naniii');
+let test3 = getTaskTitles(mockProjects, 'bnds9ia');
+console.log(test1, test2, test3);
+*/

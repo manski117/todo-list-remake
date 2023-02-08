@@ -55,7 +55,7 @@ export function conditionalEditTaskSchema(stateValue: ProjectObject, selectedPro
       return yup.object({
         title: yup
         .string()
-        .min(2).test('task-exists', 'Task already exists', value => !(allTasks.includes(value as string)))
+        .min(2).test('task-exists', 'Task already exists', value => !(allTasks.includes(value as string) && value !== taskToEdit))
         .required("Required"),
         date: yup.date()
     .transform(function (value, originalValue) {
