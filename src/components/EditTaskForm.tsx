@@ -21,13 +21,15 @@ export default function EditTaskForm(props: any){
     const [selectedProjectCopy, setSelectedProject] = selectedProject;
     const [currentTaskCopy, setCurrentTask] = currentTask;
 
+    let initialValues = allProjectsCopy[selectedProjectCopy][`${props.taskName}`];
+
     class Task {
       title: string;
       date: string;
       details: string;
       complete: boolean;
 
-      constructor(title: string, date: string, details: string, complete: boolean=false){
+      constructor(title: string, date: string, details: string='', complete: boolean=false){
           this.title=title;
           this.date=date;
           this.complete=complete;
@@ -77,16 +79,26 @@ export default function EditTaskForm(props: any){
         setAllProjects(newAllProjects); 
     }
 
+    function deleteTask(){
+      //create a copy of the state
+      let newAllProjects = {...allProjectsCopy};
+      //delete the old task object
+              delete newAllProjects[selectedProjectCopy].tasks[props.taskName];
+      //update state
+              setAllProjects(newAllProjects);
+    }
+
     let taskFormEditSchema = conditionalEditTaskSchema(allProjectsCopy, selectedProjectCopy, props.taskName )
 
+    //data.title, data.date, data.details, data.complete
     return(
         <div className="task-form">
           <Formik
             initialValues={{
-              title: '',
-              date: '',
-              details: '',
-              complete: false,
+              title: props.taskName,
+              date: props.taskDate,
+              details: props.taskDetails,
+              complete: props.taskStatus,
             }}
             validationSchema={taskFormEditSchema}
             onSubmit={(values: Values, { setSubmitting, resetForm }: FormikHelpers<Values>) => {
@@ -99,7 +111,7 @@ export default function EditTaskForm(props: any){
                 setSubmitting(false);
               }, 500);
             //   resetForm();
-              //TODO: put function here that will unmount form
+              props.toggleEditMenu();
               
             }}
           >
@@ -134,7 +146,10 @@ export default function EditTaskForm(props: any){
                   <br />
               </section>
 
-              <button className="form-edit-btn form-submit-btn" type="submit">Confirm Edits</button>
+              <div className="edit-button-wrapper flexbox">
+                <button className="form-edit-btn form-submit-btn" type="submit">Confirm Edits</button>
+                <button onClick={deleteTask} className="form-edit-btn form-submit-btn" >Delete Task</button>
+              </div>
             </Form>
           </Formik>
          </div>

@@ -26,7 +26,7 @@ export default function TaskForm(props: any){
       details: string;
       complete: boolean;
 
-      constructor(title: string, date: string, details: string, complete: boolean=false){
+      constructor(title: string, date: string, details: string ='', complete: boolean=false){
           this.title=title;
           this.date=date;
           this.complete=complete;

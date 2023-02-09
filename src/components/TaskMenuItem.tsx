@@ -26,7 +26,12 @@ export default function TaskMenuItem(props: any) {
         </div>
     )
 
-    let editTaskForm = <EditTaskForm taskName={props.taskName} />
+    let editTaskForm = <EditTaskForm 
+        taskName={props.taskName}
+        taskDate={props.taskDate}
+        taskDetails={props.taskDetails}
+        taskStatus={props.taskStatus}
+        toggleEditMenu={toggleEditMenu} />
 
     // function handleEditClick(){
     //     alert(`you clicked the edit icon of ${props.projectName}`);
