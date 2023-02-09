@@ -324,11 +324,18 @@ p{
 
 .error-msg{
   position: absolute;
+}
+
+.error-msg-edit-project{
   
 }
 
 
 /* ##### Buttons, Icons and clickable images ##### */
+button{
+  cursor:pointer;
+}
+
 .form-edit-btn{
   width: 90%;
   cursor: pointer;
