@@ -36,6 +36,8 @@ function App() {
   const [currentTask, setCurrentTask] = useState(15);
   //all projects
   const [allProjects, setAllProjects] = useState<ProjectObject | null>(null);
+  //sidebar displayed
+  const [sidebarOpen, setSidebarOpen] = useState<boolean>(true);
 
 
   React.useEffect(() => {
@@ -46,19 +48,22 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
-      <p>Root state: {currentTask}, {selectedProject}</p>
       <AllContext.Provider 
       value={{
         allProjects: [allProjects, setAllProjects], 
         currentTask: [currentTask, setCurrentTask], 
-        selectedProject: [selectedProject, setSelectedProject]}}>
+        selectedProject: [selectedProject, setSelectedProject],
+        sidebarOpen: [sidebarOpen, setSidebarOpen]}}>
+      <Header />
+      <p>Root state: {currentTask}, {selectedProject}</p>
+      
         <main className="content flexbox">
           <SelectedProject />
           <ProjectSidebar />
         </main>
-      </AllContext.Provider>
+      
       <Footer />
+      </AllContext.Provider>
     </div>
   );
 }

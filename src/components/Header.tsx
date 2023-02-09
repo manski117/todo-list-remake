@@ -1,14 +1,26 @@
-import React from "react";
+import React, {useContext} from "react";
+import { AllContext } from "../App";
 
 export default function Header(){
+    const {allProjects, selectedProject, currentTask, sidebarOpen} = React.useContext(AllContext);
+    const [allProjectsCopy, setAllProjects] = allProjects;
+    const [selectedProjectCopy, setSelectedProject] = selectedProject;
+    const [currentTaskCopy, setCurrentTask] = currentTask;
+    const [sidebarOpenCopy, setSidebarOpen] = sidebarOpen;
 
+    function toggleSidebar(){
+        setSidebarOpen(!sidebarOpenCopy);
+    }
+
+    let openClassNames = sidebarOpenCopy ? 'nav-icon hidden' : 'nav-icon'
+    let closeClassNames = sidebarOpenCopy ? 'nav-icon' : 'nav-icon hidden'
 
     return(
         <nav className="flexbox">
             <h1>To-Do List App</h1>
             <div className="menu-toggle">
-                <img className="navIcon" id="navClosed" src="https://img.icons8.com/ios-filled/50/null/menu--v1.png" alt="open/close tab" />
-                <img className="navIcon" id='navOpen' src="https://img.icons8.com/ios-filled/50/null/delete-sign--v1.png" alt="open/close tab" />
+                <img onClick={toggleSidebar} className={openClassNames} id="navClosed" src="https://img.icons8.com/ios-filled/50/null/menu--v1.png" alt="open/close tab" />
+                <img onClick={toggleSidebar} className={closeClassNames} id='navOpen' src="https://img.icons8.com/ios-filled/50/null/delete-sign--v1.png" alt="open/close tab" />
             </div>
         </nav>
     )
