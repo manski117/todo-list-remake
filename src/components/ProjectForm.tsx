@@ -41,7 +41,7 @@ export default function ProjectForm(props: any){
 
 
     return (
-        <div className="temporary-container">
+        <div className="new-project-form">
           <Formik
             initialValues={{
               projectName: ''
@@ -60,12 +60,12 @@ export default function ProjectForm(props: any){
               
             }}
           >
-            <Form>
-              <label htmlFor="projectName">Project Name</label>
+            <Form className="new-project-form-Form">
+              <label htmlFor="projectName">New Project Name</label><br />
               <Field id="projectName" name="projectName" placeholder="My Project" />
               <ErrorMessage name="projectName">{msg => <div className="error-feedback">{msg}</div>}</ErrorMessage>
               
-              <button type="submit">Submit</button>
+              <button title="Create Project" type="submit" className="small-submit-btn small-btn new-project-submit">&#9989;</button>
             </Form>
           </Formik>
           
