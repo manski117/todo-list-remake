@@ -54,6 +54,29 @@ export default function EditTaskForm(props: any){
       
     }
 
+    function updateTaskInState(data: Values, projectName: string, taskToEdit: string){
+        //changes only the task you are editing
+
+        //create a copy of the state
+        let newAllProjects = {...allProjectsCopy};
+
+
+        //make a new task object
+        let updatedTask = new Task(data.title, data.date, data.details, data.complete);
+
+        //find the project that is being changed
+        
+
+        //delete the old task object
+        delete newAllProjects[projectName].tasks[taskToEdit];
+
+        //set the task of that object equal to the new task object
+        newAllProjects[projectName].tasks[`${data.title}`] = updatedTask;
+
+        //update state
+        setAllProjects(newAllProjects); 
+    }
+
     let taskFormEditSchema = conditionalEditTaskSchema(allProjectsCopy, selectedProjectCopy, props.taskName )
 
     return(
@@ -71,7 +94,8 @@ export default function EditTaskForm(props: any){
                 alert(JSON.stringify(values, null, 2));
                 console.log(JSON.stringify(values, null, 2));
                 // console.log(JSON.stringify(values, null, 2));
-                sendTaskToProject(values, selectedProjectCopy);
+                // sendTaskToProject(values, selectedProjectCopy);
+                updateTaskInState(values, selectedProjectCopy, props.taskName);
                 setSubmitting(false);
               }, 500);
             //   resetForm();

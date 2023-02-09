@@ -1,7 +1,9 @@
 import React, {useContext} from "react";
 import { AllContext } from "../App";
 import { Formik, Field, Form, FormikHelpers, ErrorMessage } from 'formik';
+//schemas
 import { taskFormSchema } from "../schemas";
+import { conditionalEditTaskSchema } from "../schemas";
 
 //types
 interface Values {
@@ -12,7 +14,7 @@ interface Values {
 }
 
 
-export default function TaskForm(){
+export default function TaskForm(props: any){
     const {allProjects, selectedProject, currentTask} = React.useContext(AllContext);
     const [allProjectsCopy, setAllProjects] = allProjects;
     const [selectedProjectCopy, setSelectedProject] = selectedProject;
@@ -30,7 +32,7 @@ export default function TaskForm(){
           this.complete=complete;
           this.details=details;
       }
-  }
+    }
   
     function sendTaskToProject(data: any, projectKey: string){
 
@@ -49,7 +51,9 @@ export default function TaskForm(){
       console.log('sendTaskToProject()',newTask, newAllProjects, tasksToUpdate);
       setAllProjects(newAllProjects); 
       
-  }
+    }
+
+    let newTaskFormSchema = conditionalEditTaskSchema(allProjectsCopy, selectedProjectCopy);
 
 
 
@@ -62,7 +66,7 @@ export default function TaskForm(){
               details: '',
               complete: false,
             }}
-            validationSchema={taskFormSchema}
+            validationSchema={newTaskFormSchema}
             onSubmit={(values: Values, { setSubmitting, resetForm }: FormikHelpers<Values>) => {
               setTimeout(() => {
                 alert(JSON.stringify(values, null, 2));
@@ -99,6 +103,7 @@ export default function TaskForm(){
               <br />
 
               <button type="submit">Submit</button>
+              <button onClick={props.handleClick} className="close-form">X</button>
             </Form>
           </Formik>
          </div>

@@ -31,8 +31,9 @@ export function conditionalEditProjectNameSchema(stateValue: any){
   
 }
 
-export function conditionalEditTaskSchema(stateValue: ProjectObject, selectedProject: string, taskToEdit: string){
-
+export function conditionalEditTaskSchema(stateValue: ProjectObject, selectedProject: string, taskToEdit: string = ''){
+  
+  //user cannot name a task a name that already exists as a different task than the one they are editing
   function getTaskTitles(projectObj: any | null, projectName: string) {
     if (projectObj === null) return [];
     let project = projectObj[projectName as keyof typeof projectObj];
@@ -55,7 +56,7 @@ export function conditionalEditTaskSchema(stateValue: ProjectObject, selectedPro
       return yup.object({
         title: yup
         .string()
-        .min(2).test('task-exists', 'Task already exists', value => !(allTasks.includes(value as string) && value !== taskToEdit))
+        .min(3).test('task-exists', 'Task already exists', value => !(allTasks.includes(value as string) && value !== taskToEdit))
         .required("Required"),
         date: yup.date()
     .transform(function (value, originalValue) {

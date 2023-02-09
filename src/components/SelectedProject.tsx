@@ -10,7 +10,12 @@ export default function SelectedProject(){
     const [allProjectsCopy, setAllProjects] = allProjects;
     const [selectedProjectCopy, setSelectedProject] = selectedProject;
     const [currentTaskCopy, setCurrentTask] = currentTask;
+    const [taskFormDisplayed, setTaskFormDisplayed] = React.useState<boolean>(false);
 
+    let formComponent = <TaskForm handleClick={toggleNewTaskForm} />
+    function toggleNewTaskForm(){
+        setTaskFormDisplayed(!taskFormDisplayed);
+    }
     
     return(
         <div id="current-project" className="flexbox">
@@ -20,8 +25,8 @@ export default function SelectedProject(){
             <div className="project-tasks flexbox">
                 <TaskList />
             </div>
-            <button id="add-new-task" className="form-hide-button">Add New Task</button>
-            <TaskForm />
+            <button onClick={toggleNewTaskForm} id="add-new-task" className="form-hide-button">Add New Task</button>
+            {taskFormDisplayed ? formComponent : null}
         </div>
     )
 }
