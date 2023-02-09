@@ -19,8 +19,8 @@ export default function Header(){
         <nav className="flexbox">
             <h1>To-Do List App</h1>
             <div className="menu-toggle">
-                <img onClick={toggleSidebar} className={openClassNames} id="navClosed" src="https://img.icons8.com/ios-filled/50/null/menu--v1.png" alt="open/close tab" />
-                <img onClick={toggleSidebar} className={closeClassNames} id='navOpen' src="https://img.icons8.com/ios-filled/50/null/delete-sign--v1.png" alt="open/close tab" />
+                <img onClick={toggleSidebar} className={openClassNames} id="navClosed" src="https://img.icons8.com/fluency-systems-filled/48/FFFFFF/menu.png" alt="open/close tab" />
+                <img onClick={toggleSidebar} className={closeClassNames} id='navOpen' src="https://img.icons8.com/ios-filled/100/FFFFFF/multiply.png" alt="open/close tab" />
             </div>
         </nav>
     )

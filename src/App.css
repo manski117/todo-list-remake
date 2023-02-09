@@ -11,21 +11,24 @@
 }
 
 :root {
-  --header-color: #BF5D39;
-  --header-text-color: #ffffff;
-  --subhead-task-color: #D9A036;
+  --header-color: #0A306D;
+  --header-text-color: #B0CAFF;
+  --subhead-task-color: #134697;
   --subhead-task-text-color: #ffffff;
-  --subhead-project-color: #8C4A5C;
+  --subhead-project-color: #9E803E;
   --subhead-project-text-color: #ffffff;
-  --project-task-color: #ffe59c;
-  --project-task-text-color: #1b1c1d;
-  --task-bg-color: #ffffff;
+  --project-task-color: #859034;
+  --edit-form-project-color: #c7a55b;
+  --project-menu-item-color: #9E803E;
+  --project-task-text-color: #ffffff;
+  --task-bg-color: #d5d5d5;
+  --task-item-bg-color: #4277af;
   --project-list-item-color: #a26273;
   --project-list-item-text-color: #ffffff;
   --project-bg-color: #ffffff;
-  --sidebar-bg-color: #c9c9c9;
-  --footer-color: #868C54;
-  --footer-text-color: #181818;
+  --sidebar-bg-color: #d7c49b;
+  --footer-color: #0A306D;
+  --footer-text-color: #B0CAFF;
   --link-color: #9bd5ff;
   --link-hover-color: #ffa6a6;
   --button-project-color: #ff8bcf;
@@ -34,6 +37,11 @@
   --button-task-text-color: #1e1e1e;
   --button-edit-color: #949494;
   --button-edit-text-color: #5c5c5c;
+  --button-small-submit-text: #2eb234;
+  --button-small-submit-bg: #c5c5c5;
+  --button-small-delete-text: #621f1f;
+  --button-small-delete-bg: #c0c0c0;
+  --button-close-form: linear-gradient( to bottom, #acb3b8, #eee, #a1abb2);
   --error-text: #ff0000;
   
 }
@@ -74,7 +82,7 @@ nav h1{
 main{
   flex-direction: row;
   min-height: 80vh;
-  max-height: 200hv;
+  
   width: 100%;
   background-color: var(--project-bg-color); 
 }
@@ -100,6 +108,7 @@ Footer h4{
   min-width: 400px;
   max-width: 2000px;
   width: 70%;
+  background-color: var(--task-bg-color);
 }
 
 .selected-project-header-container{
@@ -111,9 +120,9 @@ Footer h4{
   align-items: center;
   justify-content: center;
   
-  margin: 20px;
+  margin: 10px auto;
   margin-bottom: 0px;
-  width: 90%;
+  width: 95%;
 }
 
 .selected-project-header{
@@ -121,10 +130,14 @@ Footer h4{
   color: var(--subhead-task-text-color)
 }
 
+.project-tasks-container{
+  width: 100%;
+}
+
 .project-tasks{
   flex-direction: column;
-  width: 90%;
-  margin: 20px;
+  width: 95%;
+  margin: 10px auto;
   margin-top: 10px;
   gap: 15px;
   
@@ -132,10 +145,12 @@ Footer h4{
 
 .task-item-container{
 
-  background-color: var(--button-edit-color);
+  background-color: var(--task-item-bg-color);
   border-radius: 20px;
   padding: 10px;
   position: relative;
+  width: 100%;
+  /* SIZE //////////////////// */
 }
 
 .task-menu-item{
@@ -149,19 +164,42 @@ Footer h4{
 }
 
 .task-info-container{
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+  
+  
+}
+.h3-title{
+  text-align: center;
+}
+
+.h3-status{
+  text-align: right;
+}
+
+.task-info{
+  color: var(--project-task-text-color);
+}
+
+.task-info .h3-date{
+  flex-grow: 1;
 }
 
 .task-info-container h3{
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-weight: 800;
+  /* color: var(--project-task-text-color); */
 }
 
 .task-details-container{
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  
+}
+.task-details-container p{
+  font-size: 1.2rem;
 }
 
 #add-new-task{
@@ -169,18 +207,30 @@ Footer h4{
   align-items: center;
   gap: 10px;
   margin: 5px 20px;
-  width: 90%;
-/*   margin: 0 auto; */
-  height: 50px;
-  padding: 5px;
-  background-color: var(--subhead-task-color) !important;
-  color: var(--button-task-text-color);
-  border-radius: 5px;
+  width: fit-content;
+  margin: 10px auto;
+  
+  padding:15px;
+  background-image: linear-gradient(to bottom, #0051ff, #009dff, #00b7ff, #007bff, #0044ff);
+  color: var(--button-project-text-color);
+  font-family: 'Roboto', sans-serif;
+  border-radius: 15px;
   cursor: pointer;
 /*   width: fit-content; */
   justify-content: center;
   align-items: center;
-  
+
+}
+
+.add-icon{
+  height: 35px;
+  width: 35px;
+
+}
+
+.form-hide-button{
+  align-items: center;
+  font-size: 20px;
 }
 
 
@@ -232,7 +282,7 @@ Footer h4{
 .project-menu-item{
   justify-content: space-between;
   align-items: center;
-  background-color: var(--button-edit-color);
+  background-color: var(--project-menu-item-color);
   border-radius: 20px;
   
 }
@@ -253,15 +303,17 @@ Footer h4{
   justify-content: center;
   align-items: center;
   gap: 5px;
-  background-color: var(--subhead-project-color);
+  background-image: linear-gradient(to bottom, #7e7508, #877f2b, #cdb16a, #ac9629, #7d730a);
   color: var(--button-project-text-color);
-  border-radius: 5px;
-  padding: 3px 13px;
+  border-radius: 15px;
+  padding: 13px 15px;
   margin-top: 10px;
   cursor: pointer;
   width: fit-content;
   margin: auto;
   margin-top: 1rem;
+  color: var(--button-project-text-color);
+  font-family: 'Roboto', sans-serif;
 }
 
 p{
@@ -285,7 +337,7 @@ p{
   width: 100%;
   min-height: 100px;
   
-  background-color: var(--subhead-project-color);
+  background-color: var(--edit-form-project-color);
   padding: 5px;
   border-radius: 10px;
   
@@ -300,6 +352,8 @@ p{
   width: 25px;
   height: 25px;
   cursor: pointer;
+  color: rgb(28, 28, 28);
+  background:linear-gradient( to bottom, #bcc6cc, #eee, #bcc6cc);
 }
 
 .Field{
@@ -314,7 +368,9 @@ p{
   gap: 15px;
 }
 .Field.date-input, .Field.task-input{
-  width: 100px;
+  width: 75%;
+  height: 1.5rem;
+  font-size: 1rem;
 }
 
 .details-input{
@@ -333,7 +389,7 @@ p{
 
 /* ##### Buttons, Icons and clickable images ##### */
 button{
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .form-edit-btn{
@@ -344,8 +400,9 @@ button{
 .icon-btn{
   width: 35px;
   height: 35px;
-  transform: translateY(3px);
+  
   cursor: pointer;
+  
 }
 
 .edit-icon{
@@ -357,6 +414,10 @@ button{
   cursor: pointer;
 }
 
+.small-btn{
+  background:linear-gradient( to bottom, #bcc6cc, #eee, #bcc6cc);
+}
+
 img.icon-img{
   width:40px;
   height:40px;
@@ -364,6 +425,29 @@ img.icon-img{
 
 .icon-btn:hover{
   transform:scale(110%);
+}
+
+section label{
+  color: var(--subhead-task-text-color);
+  margin-right: 5px;
+  font-weight: bolder;
+  font-size: 1.3rem;
+
+}
+
+.small-submit-btn{
+  color: var(--button-small-submit-text);
+  background-color: var(--button-small-submit-bg);
+}
+
+.small-delete-btn{
+  color: var(--button-small-delete-text);
+  background-color: var(--button-small-delete-bg);
+}
+
+.med-btn{
+  font-family:  Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  background: linear-gradient( to bottom, #bcc6cc, #eee, #bcc6cc);
 }
 
 /* ##### Dynamic User Feedback ##### */
@@ -376,6 +460,14 @@ img.icon-img{
 
 .hidden{
   display: none !important;
+}
+
+a{
+  color: var(--link-color);
+}
+
+a:hover{
+  color:var(--link-hover-color)
 }
 
 

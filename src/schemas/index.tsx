@@ -16,14 +16,14 @@ export function conditionalEditProjectNameSchema(stateValue: any){
       let keys = Object.keys(stateValue);
       return yup.object({
         projectName: yup
-        .string()
+        .string().max(20)
         .min(2).test('project-exists', 'Project already exists', value => !(keys.includes(value as string)))
         .required("Required"),
       })
   } else{
     return yup.object({
       projectName: yup
-        .string()
+        .string().max(20)
         .min(2)
         .required("Required"),
     })
@@ -54,7 +54,7 @@ export function conditionalEditTaskSchema(stateValue: ProjectObject, selectedPro
       console.log('taskToEdit:', taskToEdit);
       return yup.object({
         title: yup
-        .string()
+        .string().max(20)
         .min(3).test('task-exists', 'Task already exists', value => !(allTasks.includes(value as string) && value !== taskToEdit))
         .required("Required"),
         date: yup.date()
@@ -73,7 +73,7 @@ export function conditionalEditTaskSchema(stateValue: ProjectObject, selectedPro
   } else{
     return yup.object({
       title: yup
-    .string()
+    .string().max(20)
     .min(3)
     .required("Required"),
     date: yup.date()

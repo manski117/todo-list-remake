@@ -22,10 +22,10 @@ export default function SelectedProject(){
             <div className="selected-project-header-container">
                 <h2 className="selected-project-header">{selectedProjectCopy}</h2>
             </div>
-            <div className="project-tasks flexbox">
+            <div className="project-tasks-container flexbox">
                 <TaskList />
             </div>
-            <button onClick={toggleNewTaskForm} id="add-new-task" className="form-hide-button">Add New Task</button>
+            <button onClick={toggleNewTaskForm} id="add-new-task" className="form-hide-button flexbox"><img className="add-icon" src="https://img.icons8.com/ios-filled/100/FFFFFF/plus-2-math.png"/>New Task</button>
             {taskFormDisplayed ? formComponent : null}
         </div>
     )

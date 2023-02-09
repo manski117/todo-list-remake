@@ -96,12 +96,11 @@ function App() {
         selectedProject: [selectedProject, setSelectedProject],
         sidebarOpen: [sidebarOpen, setSidebarOpen]}}>
       <Header />
-      <p>Root state: {currentTask}, {selectedProject}</p>
       
-        <main className="content flexbox">
-          <SelectedProject />
-          <ProjectSidebar />
-        </main>
+      <main className="content flexbox">
+        <SelectedProject />
+        <ProjectSidebar />
+      </main>
       
       <Footer />
       </AllContext.Provider>

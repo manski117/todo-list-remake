@@ -29,7 +29,7 @@ export default function ProjectSidebar(){
                 <ProjectList />
             </div>
 
-            <button onClick={toggleNewForm} id="add-new-project" className="form-hide-button flexbox">New Project</button>
+            <button onClick={toggleNewForm} id="add-new-project" className="form-hide-button flexbox"><img className="add-icon" src="https://img.icons8.com/ios-filled/100/FFFFFF/plus-2-math.png"/>New Project</button>
             {newFormOpen ? <ProjectForm handleClose={toggleNewForm} /> : null}
 
         </aside>

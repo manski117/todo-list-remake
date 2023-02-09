@@ -147,8 +147,8 @@ export default function EditTaskForm(props: any){
               </section>
 
               <div className="edit-button-wrapper flexbox">
-                <button className="form-edit-btn form-submit-btn" type="submit">Confirm Edits</button>
-                <button onClick={deleteTask} type="button" className="form-edit-btn form-submit-btn" >Delete Task</button>
+                <button className="form-edit-btn form-submit-btn med-btn" type="submit">Confirm Edits</button>
+                <button onClick={deleteTask} type="button" className="med-btn form-edit-btn form-submit-btn" >Delete Task</button>
               </div>
             </Form>
           </Formik>

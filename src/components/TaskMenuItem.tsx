@@ -12,12 +12,15 @@ export default function TaskMenuItem(props: any) {
     const [currentTaskCopy, setCurrentTask] = currentTask;
     const [editMenuDisplayed, setEditMenuDisplayed] = React.useState<boolean>(false);
 
+    let editIcon = "https://img.icons8.com/sf-black/64/FFFFFF/pencil.png";
+    let closeIcon = "https://img.icons8.com/ios-filled/100/FFFFFF/multiply.png";
+
     let taskInfo = (
         <div className="task-menu-item flexbox">
-            <div className="task-info-container flexbox">
-                <h3 className="task-info">{props.taskName}</h3>
-                <h3 className="task-info">{props.taskDate}</h3>
-                <h3 className="task-info">{props.taskStatus ? 'Done' : 'Not Finished'}</h3>
+            <div className="task-info-container">
+                <h3 className="task-info h3-date">{props.taskDate}</h3>
+                <h3 className="task-info h3-title">{props.taskName}</h3>
+                <h3 className="task-info h3-status">{props.taskStatus ? 'Done' : 'Not Finished'}</h3>
                 
             </div>
             <div className="task-details-container">
@@ -44,7 +47,7 @@ export default function TaskMenuItem(props: any) {
 
     return(
         <div className="task-item-container">
-            <img className="edit-icon" onClick={toggleEditMenu} src="https://img.icons8.com/ios-glyphs/60/null/menu-2.png" alt="edit task" role="button" tabIndex={0} aria-label="Clickable image"/>
+            <img title={editMenuDisplayed ? "Close Edit Form" : "Edit Task"} className="edit-icon" onClick={toggleEditMenu} src={editMenuDisplayed ? closeIcon : editIcon} alt="edit task" role="button" tabIndex={0} aria-label="Clickable image"/>
             {editMenuDisplayed ? editTaskForm : taskInfo}
         </div>
     );

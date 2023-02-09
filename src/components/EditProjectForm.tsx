@@ -74,7 +74,7 @@ export default function EditProjectForm(props: any){
 
     return (
         <div className="edit-form-project-name">
-          <button onClick={props.handleClick} className='close-btn' aria-label="Close Form">X</button>
+          <button type="button" title="close edit form" onClick={props.handleClick} className='close-btn' aria-label="Close Form">X</button>
           <Formik
             initialValues={{
               projectName: props.oldProjectName
@@ -100,8 +100,8 @@ export default function EditProjectForm(props: any){
               <label htmlFor="projectName">Edit Project Name</label>
               <span className="edit-input-container flexbox">
                 <Field className='Field text-input' id="projectName" name="projectName" placeholder="Give your project a new name" />
-                <button title="confirm changes" type="submit">&#9989;</button>
-                <button title="delete project" type="button" onClick={deleteProject} className="delete-btn">&#128465;</button>
+                <button title="confirm changes" type="submit" className="small-submit-btn small-btn">&#9989;</button>
+                <button title="delete project" type="button" onClick={deleteProject} className="delete-btn small-btn small-delete-btn">&#128465;</button>
               </span>
               <ErrorMessage name="projectName">{msg => <div className="error-feedback error-msg-edit-project">{msg}</div>}</ErrorMessage>
               
