@@ -3,7 +3,6 @@ import { AllContext } from "../App";
 import { Formik, Field, Form, FormikHelpers, ErrorMessage } from 'formik';
 //schemas
 import { conditionalEditProjectNameSchema } from "../schemas";
-import { projectNameSchema } from "../schemas";
 import * as yup from "yup";
 
 //types
@@ -86,6 +85,7 @@ export default function EditProjectForm(props: any){
                 // alert(JSON.stringify(values, null, 2));
                 // sendProjectNameToState(makeNewProject(values.projectName));
                 // sendProjectNameToState(values);
+                alert('the onSubmit handler of EditProjectForm was just called.')
                 updateProjectNameInState(values);
                 // makeNewProject(values.projectName);
                 setSubmitting(false);
@@ -101,7 +101,7 @@ export default function EditProjectForm(props: any){
               <span className="edit-input-container flexbox">
                 <Field className='Field text-input' id="projectName" name="projectName" placeholder="Give your project a new name" />
                 <button title="confirm changes" type="submit">&#9989;</button>
-                <button title="delete project" onClick={deleteProject} className="delete-btn">&#128465;</button>
+                <button title="delete project" type="button" onClick={deleteProject} className="delete-btn">&#128465;</button>
               </span>
               <ErrorMessage name="projectName">{msg => <div className="error-feedback error-msg-edit-project">{msg}</div>}</ErrorMessage>
               
@@ -111,12 +111,3 @@ export default function EditProjectForm(props: any){
         </div>
       );
 }
-
-/*TODO Tuesday:
-    
-    -somehow make it populate its initial value from the project state
-    -link it to the "editProjectForm" function in ProjectMenuItem
-    -do something similar for tasks (make a task edit form)
-    -fix the name collision problem (check and see if stack overflow answered hopefully)
-    -rest should be easy, all css from there and hamburger menu item lol
-    */

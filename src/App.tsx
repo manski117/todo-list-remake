@@ -39,10 +39,51 @@ function App() {
   //sidebar displayed
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(true);
 
+  
+
+  //load the project list from local storage
+  function getFromLocalStorage(){
+    let allProjectsRaw = localStorage.getItem("allProjects");
+    console.log(allProjectsRaw);
+    if (!(allProjectsRaw === null)){
+        let allProjectsLoaded = JSON.parse(allProjectsRaw);
+        console.log(allProjectsLoaded);
+        setAllProjects(allProjectsLoaded);
+        console.log('local storage SHOULD have loaded successfully yeet');
+    } else{
+      console.log('local storage was found to be null');
+    }
+    
+  }
+
+  //save the project obj to local storage
+  function saveToLocalStorage(stateData: ProjectObject | null){
+  //convert the project list from an obj to string so it can be saved
+    if(!(stateData===null)){
+      localStorage.setItem("allProjects", JSON.stringify(stateData));
+      console.log('...just tried to save! ...did it work??');
+
+    } else{
+      console.log('tried to save to local storage but it looks like state data was null!')
+    }
+    
+    
+  }
+
+
+
+  React.useEffect(() =>{
+    alert('this should run ONLY when the component first loads');
+    console.log('this should run ONLY when the component first loads');
+    getFromLocalStorage();
+  }, []);
+
 
   React.useEffect(() => {
-    console.log('new project state just dropped:')
+    console.log('new project state just dropped:');
+    console.log('attempting to save to local storage...');
     console.log(allProjects);
+    saveToLocalStorage(allProjects);
   }, [allProjects]);
 
 

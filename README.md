@@ -14,3 +14,12 @@
 
 
 //TODO: make sure that the EDIT project forms actually change the existing project in state when a new name is submitted. Right now they just make new projects, but they should overrite the old ones.
+
+//TODO: All this stuff:
+-clean up logs and alerts
+-prettier
+-make the headline have something in it by default when no project is selected
+-in general, this is buggy and doesn't always update when projects delete, get edited.
+-better color scheme
+-better layout
+-make responsive
