@@ -107,7 +107,7 @@ Footer h4{
   flex-direction: column;
   min-width: 400px;
   max-width: 2000px;
-  width: 70%;
+  width: 100%;
   background-color: var(--task-bg-color);
 }
 
@@ -239,7 +239,7 @@ Footer h4{
 
 #projects-sidebar{
   flex-direction: column;
-  width: 30%;
+  width: 40%;
   min-width: 200px;
   align-items: center;
   background-color: var(--sidebar-bg-color);
@@ -343,6 +343,81 @@ p{
   
 }
 
+.new-task-form{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 10px auto;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 75%;
+  min-height: 100px;
+  background-color: var(--task-item-bg-color);
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.new-task-form-Form{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 10px auto;
+}
+
+.new-task-form label{
+  color: var(--button-project-text-color);
+  font-weight: 800;
+  font-size: 1.3rem;
+}
+
+.task-info-input input{
+  position: relative;
+}
+
+.new-task-error{
+  position: absolute
+}
+
+.input-wrapper-new-task{
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 15px;
+  justify-items: start;
+  align-items: start;
+  /* TODO these will need to be flexboxes with media query */
+}
+.task-info-textarea textarea{
+  width: clamp(200px, 500px, 600px);
+  height: 50px;
+}
+
+.flexbox-checkbox{
+  display: flex;
+  align-items: center;
+}
+
+.button-wrapper-new-task{
+  margin: 1px auto;
+  
+}
+
+.button-wrapper-new-task button{
+  width: 5rem;
+  margin: 0 5px;
+  background-image: linear-gradient(to bottom, #5d5d5d, #6e6e6e, #949494, #6e6e6e, #646464);
+  color: var(--button-project-text-color);
+  font-family: 'Roboto', sans-serif;
+  border-radius: 10px;
+  padding: 5px 5px;
+}
+
 
 .close-btn{
   position: absolute;
@@ -382,14 +457,16 @@ p{
   position: absolute;
 }
 
-.error-msg-edit-project{
-  
-}
+
 
 
 /* ##### Buttons, Icons and clickable images ##### */
 button{
   cursor: pointer;
+}
+
+button:hover{
+  filter: brightness(111%);
 }
 
 .form-edit-btn{
@@ -400,9 +477,15 @@ button{
 .icon-btn{
   width: 35px;
   height: 35px;
-  
   cursor: pointer;
+}
+
+#complete{
+  width: 20px;
+  height: 20px;
+  color: #a37f3f;
   
+  border-radius: 5px;
 }
 
 .edit-icon{
@@ -467,7 +550,7 @@ a{
 }
 
 a:hover{
-  color:var(--link-hover-color)
+  color:var(--link-hover-color);
 }
 
 

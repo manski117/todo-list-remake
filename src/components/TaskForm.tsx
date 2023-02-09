@@ -58,7 +58,7 @@ export default function TaskForm(props: any){
 
 
     return(
-        <div className="task-form">
+        <div className="new-task-form">
           <Formik
             initialValues={{
               title: '',
@@ -77,30 +77,41 @@ export default function TaskForm(props: any){
               
             }}
           >
-            <Form>
-              <label htmlFor="title">Task Name</label>
-              <Field id="title" name="title" placeholder="My task" />
-              <ErrorMessage name="title">{msg => <div className="error-feedback">{msg}</div>}</ErrorMessage>
-              <br />
+            <Form className="new-task-form-Form">
+              <div className="input-wrapper-new-task">
+                <div className="task-info-input">
+                  <label htmlFor="title">Task Name*</label><br />
+                  <Field id="title" name="title" placeholder="My task" />
+                  <ErrorMessage name="title">{msg => <div className="error-feedback new-task-error">{msg}</div>}</ErrorMessage>
+                  <br />
+                </div>
+                
+                <div className="task-info-input">
+                  <label htmlFor="date">Deadline*</label><br />
+                  <Field id="date" name="date" placeholder="mm-dd-yyyy" />
+                  <ErrorMessage name="date">{msg => <div className="error-feedback new-task-error">{msg}</div>}</ErrorMessage>
+                  <br />
+                </div>
+                <div className="task-info-input flexbox-checkbox">
+                  <label htmlFor="complete">Complete</label>
+                  <Field type='checkbox' id="complete" name="complete"/>
+                  <ErrorMessage name="complete">{msg => <div className="error-feedback new-task-error">{msg}</div>}</ErrorMessage>
+                  <br />
+                </div>
+              </div>
               
-              <label htmlFor="date">Deadline</label>
-              <Field id="date" name="date" placeholder="mm-dd-yyyy" />
-              <ErrorMessage name="date">{msg => <div className="error-feedback">{msg}</div>}</ErrorMessage>
-              <br />
+              <div className="task-info-textarea">
+                <label htmlFor="details">Details</label><br />
+                <Field as='textarea' id="details" name="details" placeholder="Describe task here" />
+                <ErrorMessage name="details">{msg => <div className="error-feedback">{msg}</div>}</ErrorMessage>
+                <br />
+              </div>
 
-              
-              <label htmlFor="details">Details</label>
-              <Field as='textarea' id="details" name="details" placeholder="Describe task here" />
-              <ErrorMessage name="details">{msg => <div className="error-feedback">{msg}</div>}</ErrorMessage>
-              <br />
+              <div className="button-wrapper-new-task">
+                <button title="submit form" type="submit">Submit</button>
+                <button title="close form" type='button' onClick={props.handleClick} className="close-form">X</button>
+              </div>
 
-              <label htmlFor="complete">Complete</label>
-              <Field type='checkbox' id="complete" name="complete"/>
-              <ErrorMessage name="complete">{msg => <div className="error-feedback">{msg}</div>}</ErrorMessage>
-              <br />
-
-              <button type="submit">Submit</button>
-              <button onClick={props.handleClick} className="close-form">X</button>
             </Form>
           </Formik>
          </div>
