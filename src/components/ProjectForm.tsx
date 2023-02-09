@@ -56,7 +56,7 @@ export default function ProjectForm(props: any){
                 setSubmitting(false);
               }, 500);
               resetForm();
-              //TODO: put function here that will unmount form
+              props.handleClose();
               
             }}
           >
@@ -68,7 +68,7 @@ export default function ProjectForm(props: any){
               <button type="submit">Submit</button>
             </Form>
           </Formik>
-          {/* TODO: put a close button here */}
+          
         </div>
       );
 }

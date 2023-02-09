@@ -69,14 +69,11 @@ export default function TaskForm(props: any){
             validationSchema={newTaskFormSchema}
             onSubmit={(values: Values, { setSubmitting, resetForm }: FormikHelpers<Values>) => {
               setTimeout(() => {
-                alert(JSON.stringify(values, null, 2));
-                console.log(JSON.stringify(values, null, 2));
-                // console.log(JSON.stringify(values, null, 2));
                 sendTaskToProject(values, selectedProjectCopy);
                 setSubmitting(false);
               }, 500);
-            //   resetForm();
-              //TODO: put function here that will unmount form
+              resetForm();
+              props.handleClick();
               
             }}
           >

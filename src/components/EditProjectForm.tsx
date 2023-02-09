@@ -91,7 +91,7 @@ export default function EditProjectForm(props: any){
                 setSubmitting(false);
               }, 500);
               resetForm();
-              //TODO: put function here that will unmount form
+              props.handleclick();
               
             }}
             

@@ -30,7 +30,7 @@ export default function ProjectSidebar(){
             </div>
 
             <button onClick={toggleNewForm} id="add-new-project" className="form-hide-button flexbox">New Project</button>
-            {newFormOpen ? <ProjectForm /> : null}
+            {newFormOpen ? <ProjectForm handleClose={toggleNewForm} /> : null}
 
         </aside>
     )

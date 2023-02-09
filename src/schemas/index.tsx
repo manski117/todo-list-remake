@@ -46,8 +46,7 @@ export function conditionalEditTaskSchema(stateValue: ProjectObject, selectedPro
     return Object.values(tasks).map((task: any) => task.title);
   }
 
-
-  //TODO: make it so you can still use THIS task name but not others
+ 
   if (!(stateValue === null)) {
       let allTasks = getTaskTitles(stateValue, selectedProject);
       console.log('allTasks:', allTasks);
@@ -113,8 +112,7 @@ export const taskFormSchema = yup.object().shape({
     .required("Required")
     .min("1969-11-13", "Date is too early"),
     details: yup.string(),
-    //TODO: write something later to make sure it cannot add a name if a project already exists
-    
+     
 });
 
 //.test('mike-test', 'Mike detected', value => !(value === 'mike'))
