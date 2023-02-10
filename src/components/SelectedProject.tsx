@@ -16,11 +16,13 @@ export default function SelectedProject(){
     function toggleNewTaskForm(){
         setTaskFormDisplayed(!taskFormDisplayed);
     }
+
+    let defaultMessage: string = "You have no projects yet. \nCreate a project to begin!";
     
     return(
         <div id="current-project" className="flexbox">
             <div className="selected-project-header-container">
-                <h2 className="selected-project-header">{selectedProjectCopy}</h2>
+                <h2 className="selected-project-header">{selectedProjectCopy ? selectedProjectCopy : defaultMessage}</h2>
             </div>
             <div className="project-tasks-container flexbox">
                 <TaskList />

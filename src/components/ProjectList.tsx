@@ -36,7 +36,6 @@ export default function ProjectList(){
 
     return(
         <div className="project-list flexbox">
-            <p>project components go here</p>
             {(displayProjects !== null) ? displayProjects : null}
             
         </div>

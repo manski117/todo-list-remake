@@ -48,6 +48,17 @@ export default function EditProjectForm(props: any){
       setAllProjects(newAllProjects); 
     }
 
+    function promoteNewSelectedProject(){
+      //if the user deletes an object while it is selected, a new proj must take its place
+      
+      if (!(allProjects === null)){
+        let newSelectedProject: string = allProjectsCopy[Object.keys(allProjectsCopy)[0]].title;
+        setSelectedProject(newSelectedProject);
+      } else {
+        setSelectedProject(null);
+      }
+    }
+
     function deleteProject(){
       //create a copy of the state
       let newAllProjects = {...allProjectsCopy};
@@ -55,7 +66,7 @@ export default function EditProjectForm(props: any){
       delete newAllProjects[`${props.oldProjectName}`];
       //set state equal to new object
       setAllProjects(newAllProjects);
-      props.handleclick(); 
+      promoteNewSelectedProject();
     }
 
     class Project {

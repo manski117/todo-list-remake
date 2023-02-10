@@ -133,7 +133,7 @@ export default function TaskList(){
 
     return(
         <div className="project-tasks flexbox">
-            <p>task components go here</p>
+            
             {(displayTasks !== null) ? displayTasks : null}
         </div>
     )
