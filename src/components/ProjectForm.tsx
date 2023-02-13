@@ -1,122 +1,76 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import { AllContext } from "../App";
-import { Formik, Field, Form, FormikHelpers, ErrorMessage } from 'formik';
-import { projectNameSchema } from "../schemas";
+import { Formik, Field, Form, FormikHelpers, ErrorMessage } from "formik";
 import { conditionalEditProjectNameSchema } from "../schemas";
 import * as yup from "yup";
 
 //types
 interface Values {
-    projectName: string;
-  }
-
-
-export default function ProjectForm(props: any){
-    const {allProjects, selectedProject, currentTask} = React.useContext(AllContext);
-    const [allProjectsCopy, setAllProjects] = allProjects;
-    const [selectedProjectCopy, setSelectedProject] = selectedProject;
-    const [currentTaskCopy, setCurrentTask] = currentTask;
-
-    function sendProjectNameToState(data: Values){
-        let newAllProjects = {...allProjectsCopy};
-        let newProject = new Project(`${data.projectName}`)
-        newAllProjects[`${data.projectName}`] = newProject;
-        console.log('newAllProjects,', newAllProjects);
-        setAllProjects(newAllProjects);        
-    }
-
-    class Project {
-        title: string;
-        tasks: {};
-
-        constructor(title: string){
-            this.title = title;
-            this.tasks = {};
-        }
-    }
-
-    ///test functions
-
-    let localProjectNameSchema = conditionalEditProjectNameSchema(allProjectsCopy);
-
-
-    return (
-        <div className="new-project-form">
-          <Formik
-            initialValues={{
-              projectName: ''
-            }}
-            validationSchema={localProjectNameSchema}
-            onSubmit={(values: Values, { setSubmitting, resetForm }: FormikHelpers<Values>) => {
-              setTimeout(() => {
-                // alert(JSON.stringify(values, null, 2));
-                // sendProjectNameToState(makeNewProject(values.projectName));
-                sendProjectNameToState(values);
-                // makeNewProject(values.projectName);
-                setSubmitting(false);
-              }, 500);
-              resetForm();
-              props.handleClose();
-              
-            }}
-          >
-            <Form className="new-project-form-Form">
-              <label htmlFor="projectName">New Project Name</label><br />
-              <Field id="projectName" name="projectName" placeholder="My Project" />
-              <ErrorMessage name="projectName">{msg => <div className="error-feedback">{msg}</div>}</ErrorMessage>
-              
-              <button title="Create Project" type="submit" className="small-submit-btn small-btn new-project-submit">&#9989;</button>
-            </Form>
-          </Formik>
-          
-        </div>
-      );
+  projectName: string;
 }
 
+export default function ProjectForm(props: any) {
+  const { allProjects } = React.useContext(AllContext);
+  const [allProjectsCopy, setAllProjects] = allProjects;
 
+  //this conditional schema allows names being typed to be compared to others in state
+  let localProjectNameSchema =
+    conditionalEditProjectNameSchema(allProjectsCopy);
 
-/*
-    class Task {
-        title: string;
-        date: string;
-        details: string;
-        complete: boolean;
+  function sendProjectNameToState(data: Values) {
+    let newAllProjects = { ...allProjectsCopy };
+    let newProject = new Project(`${data.projectName}`);
+    newAllProjects[`${data.projectName}`] = newProject;
+    setAllProjects(newAllProjects);
+  }
 
-        constructor(title: string, date: string, details: string, complete: boolean=false){
-            this.title=title;
-            this.date=date;
-            this.complete=complete;
-            this.details=details;
-        }
+  class Project {
+    title: string;
+    tasks: {};
+
+    constructor(title: string) {
+      this.title = title;
+      this.tasks = {};
     }
-    
-    let mockTask = {
-        title:'go shopping',
-        date:'10/29/2020',
-        details:'long string here',
-        complete: false
-    }
+  }
 
-    function sendTaskToProject(data: any, projectKey: string){
+  return (
+    <div className="new-project-form">
+      <Formik
+        initialValues={{
+          projectName: "",
+        }}
+        validationSchema={localProjectNameSchema}
+        onSubmit={(
+          values: Values,
+          { setSubmitting, resetForm }: FormikHelpers<Values>
+        ) => {
+          setTimeout(() => {
+            //send valid, sanitized user input to state
+            sendProjectNameToState(values);
+            setSubmitting(false);
+          }, 500);
+          resetForm();
+          props.handleClose();
+        }}
+      >
+        <Form className="new-project-form-Form">
+          <label htmlFor="projectName">New Project Name</label>
+          <br />
+          <Field id="projectName" name="projectName" placeholder="My Project" />
+          <ErrorMessage name="projectName">
+            {(msg) => <div className="error-feedback">{msg}</div>}
+          </ErrorMessage>
 
-            //match up with name
-        let newAllProjects = {...allProjectsCopy};
-        let projectToUpdate = newAllProjects[`${projectKey}`];
-        let tasksToUpdate = {...projectToUpdate.tasks};
-
-        
-
-        //make a task object
-        let newTask = new Task(data.title, data.date, data.details, data.complete);
-
-        //send it to nested project in state that matches the name
-        tasksToUpdate[`${data.title}`] = newTask;
-        newAllProjects[`${projectKey}`].tasks = tasksToUpdate;
-        setAllProjects(newAllProjects); 
-        
-    }
-
-    function handleClick(){
-        sendTaskToProject(mockTask, 'pikachu');
-    }
-    */
+          <button
+            title="Create Project"
+            type="submit"
+            className="small-submit-btn small-btn new-project-submit"
+          >
+            &#9989;
+          </button>
+        </Form>
+      </Formik>
+    </div>
+  );
+}
