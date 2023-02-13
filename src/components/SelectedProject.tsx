@@ -11,13 +11,29 @@ export default function SelectedProject(){
     const [selectedProjectCopy, setSelectedProject] = selectedProject;
     const [currentTaskCopy, setCurrentTask] = currentTask;
     const [taskFormDisplayed, setTaskFormDisplayed] = React.useState<boolean>(false);
+    const [defaultMessage, setDefaultMessage] = React.useState<string>('');
 
     let formComponent = <TaskForm handleClick={toggleNewTaskForm} />
     function toggleNewTaskForm(){
         setTaskFormDisplayed(!taskFormDisplayed);
     }
 
-    let defaultMessage: string = "You have no projects yet. \nCreate a project to begin!";
+        //run this only when state updates
+        React.useEffect(() => {
+            //on mount or updated project:
+            updateDefaultMessage(allProjectsCopy, selectedProjectCopy);
+            
+        }, [selectedProjectCopy, allProjectsCopy]);
+
+    function updateDefaultMessage(projects: any, currentProject: any){
+        if (projects === null){
+            setDefaultMessage("You have no projects yet. \nCreate a project to begin!") ;
+        } else if ((currentProject === null) && !(projects === null)){
+            setDefaultMessage("No project selected. Please choose a project from the project list.");
+        }
+    }
+
+
     
     return(
         <div id="current-project" className="flexbox">
