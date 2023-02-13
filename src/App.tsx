@@ -1,15 +1,16 @@
 import React from 'react';
 import { useState, createContext } from 'react';
+
 //components
 import Header from './components/Header';
 import Footer from './components/Footer';
 import SelectedProject from './components/SelectedProject';
 import ProjectSidebar from './components/ProjectsSidebar';
+
 //styles
 import './App.css';
+
 //types
-
-
 type TaskObject = {
   complete: boolean;
   date: string;
@@ -22,12 +23,8 @@ export type ProjectObject = {
   tasks: TaskObject; 
 }
 
-
-
-
 //create a context object to push context deep into component tree
 const AllContext = React.createContext<any>(null);
-
 
 function App() {
   //delcare state for selected project
@@ -44,14 +41,14 @@ function App() {
   //load the project list from local storage
   function getFromLocalStorage(){
     let allProjectsRaw = localStorage.getItem("allProjects");
-    console.log(allProjectsRaw);
+    
     if (!(allProjectsRaw === null)){
         let allProjectsLoaded = JSON.parse(allProjectsRaw);
-        console.log(allProjectsLoaded);
+        
         setAllProjects(allProjectsLoaded);
-        console.log('local storage SHOULD have loaded successfully yeet');
+        
     } else{
-      console.log('local storage was found to be null');
+      
     }
     
   }
@@ -61,28 +58,22 @@ function App() {
   //convert the project list from an obj to string so it can be saved
     if(!(stateData===null)){
       localStorage.setItem("allProjects", JSON.stringify(stateData));
-      console.log('...just tried to save! ...did it work??');
 
     } else{
-      console.log('tried to save to local storage but it looks like state data was null!')
+      console.warn('Unable to save to local storage. allProjects is currently null');
     }
-    
-    
+
   }
 
 
 
   React.useEffect(() =>{
-    alert('this should run ONLY when the component first loads');
-    console.log('this should run ONLY when the component first loads');
+    //should only load when app first renders
     getFromLocalStorage();
   }, []);
 
 
   React.useEffect(() => {
-    console.log('new project state just dropped:');
-    console.log('attempting to save to local storage...');
-    console.log(allProjects);
     saveToLocalStorage(allProjects);
   }, [allProjects]);
 

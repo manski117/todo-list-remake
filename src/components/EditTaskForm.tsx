@@ -103,14 +103,10 @@ export default function EditTaskForm(props: any){
             validationSchema={taskFormEditSchema}
             onSubmit={(values: Values, { setSubmitting, resetForm }: FormikHelpers<Values>) => {
               setTimeout(() => {
-                alert(JSON.stringify(values, null, 2));
-                console.log(JSON.stringify(values, null, 2));
-                // console.log(JSON.stringify(values, null, 2));
-                // sendTaskToProject(values, selectedProjectCopy);
                 updateTaskInState(values, selectedProjectCopy, props.taskName);
                 setSubmitting(false);
               }, 500);
-            //   resetForm();
+            
               props.toggleEditMenu();
               
             }}
