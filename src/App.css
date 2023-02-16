@@ -138,6 +138,7 @@ Footer h4{
   margin: 10px auto;
   margin-bottom: 0px;
   width: 95%;
+  min-width: 400px;
 }
 
 .selected-project-header{
@@ -641,6 +642,11 @@ a:hover{
     z-index: 2;
   }
 
+  .selected-project-header-container{
+    /* height: fit; */
+    height: fit-content;
+  }
+
   .App{
     /* height: fit-content; */
   }
@@ -667,6 +673,11 @@ a:hover{
   .App{
     height: fit-content;
     min-width: 412px;
+  }
+
+  .selected-project-header-container{
+    /* height: 200px; */
+    height: fit-content;
   }
 
   
