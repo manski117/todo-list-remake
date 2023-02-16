@@ -121,9 +121,9 @@ Footer h4{
 #current-project{
   flex-direction: column;
   min-width: 400px;
-  max-width: 2000px;
+  max-width: 3000px;
   width: 100%;
-  background-color: var(--task-bg-color);
+  
 }
 
 .selected-project-header-container{

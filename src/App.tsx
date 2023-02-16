@@ -34,7 +34,7 @@ function App() {
   //all projects
   const [allProjects, setAllProjects] = useState<ProjectObject | null>(null);
   //sidebar displayed
-  const [sidebarOpen, setSidebarOpen] = useState<boolean>(true);
+  const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
 
   
 

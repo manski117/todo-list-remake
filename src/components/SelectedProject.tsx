@@ -30,11 +30,11 @@ export default function SelectedProject() {
     //displays message helpful to user depending on weather local storage loads
     if (projects === null) {
       setDefaultMessage(
-        "You have no projects yet. \nCreate a project to begin!"
+        "You have no projects yet. Open the project dropdown menu and create a project to begin!"
       );
     } else if (currentProject === null && !(projects === null)) {
       setDefaultMessage(
-        "No project selected. Please choose a project from the project list."
+        "No project selected. Please choose a project from the project list dropdown menu."
       );
     }
   }
@@ -49,17 +49,20 @@ export default function SelectedProject() {
       <div className="project-tasks-container flexbox">
         <TaskList />
       </div>
-      <button
-        onClick={toggleNewTaskForm}
-        id="add-new-task"
-        className="form-hide-button flexbox"
-      >
-        <img
-          className="add-icon"
-          src="https://img.icons8.com/ios-filled/100/FFFFFF/plus-2-math.png"
-        />
-        New Task
-      </button>
+      {selectedProjectCopy ? (
+        <button
+          title="Create a new task"
+          onClick={toggleNewTaskForm}
+          id="add-new-task"
+          className="form-hide-button flexbox"
+        >
+          <img
+            className="add-icon"
+            src="https://img.icons8.com/ios-filled/100/FFFFFF/plus-2-math.png"
+          />
+          New Task
+        </button>
+      ) : null}
       {taskFormDisplayed ? formComponent : null}
     </div>
   );
