@@ -4,10 +4,7 @@
 
 
 **TODO LIST FOR....todo list app**
-//TODO: write something later to make sure it cannot add a taks if a that task already exists in said project
 
-
-//TODO: make sure that the EDIT project forms actually change the existing project in state when a new name is submitted. Right now they just make new projects, but they should overrite the old ones.
 
 //TODO: All this stuff:
 -clean up logs and alerts

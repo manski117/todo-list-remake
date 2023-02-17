@@ -95,11 +95,13 @@ nav h1{
 
 main{
   flex-direction: row;
-  min-height: 80vh;
-  height: 100%;
-  
   width: 100%;
   background-color: var(--project-bg-color); 
+}
+
+.no-project-loaded{
+  min-height: 80vh;
+  height: 100%;
 }
 
 Footer{

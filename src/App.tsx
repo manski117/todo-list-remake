@@ -36,6 +36,9 @@ function App() {
   //sidebar displayed
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
 
+  const projectLoadedClasses = 'content flexbox';
+  const projectNotLoadedClasses = 'content flexbox no-project-loaded';
+
   
 
   //load the project list from local storage
@@ -88,7 +91,7 @@ function App() {
         sidebarOpen: [sidebarOpen, setSidebarOpen]}}>
       <Header />
       
-      <main className="content flexbox">
+      <main className={selectedProject ? projectLoadedClasses : projectNotLoadedClasses}>
         <SelectedProject />
         <ProjectSidebar />
       </main>
