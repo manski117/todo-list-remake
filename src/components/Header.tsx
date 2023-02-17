@@ -1,13 +1,19 @@
 import React, { useContext } from "react";
 import { AllContext } from "../App";
+import updateResponsiveHeight from "../reusedFunctions/reusedFunctions";
 
 export default function Header() {
   const { sidebarOpen } = React.useContext(AllContext);
   const [sidebarOpenCopy, setSidebarOpen] = sidebarOpen;
 
+  
+
   function toggleSidebar() {
     setSidebarOpen(!sidebarOpenCopy);
+    updateResponsiveHeight();
+    
   }
+
 
   let openClassNames = sidebarOpenCopy ? "nav-icon hidden" : "nav-icon";
   let closeClassNames = sidebarOpenCopy ? "nav-icon" : "nav-icon hidden";

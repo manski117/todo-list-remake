@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { AllContext } from "../App";
+import updateResponsiveHeight from "../reusedFunctions/reusedFunctions";
 
 //components
 import TaskList from "./TaskList";
@@ -21,6 +22,12 @@ export default function SelectedProject() {
     //on mount or updated project:
     updateDefaultMessage(allProjectsCopy, selectedProjectCopy);
   }, [selectedProjectCopy, allProjectsCopy]);
+
+  //container height responsive to presence of form on screen
+  React.useEffect(() => {
+    //whenever the task form appears or disappears:
+    updateResponsiveHeight();
+  }, [taskFormDisplayed]);
 
   function toggleNewTaskForm() {
     setTaskFormDisplayed(!taskFormDisplayed);

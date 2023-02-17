@@ -13,6 +13,7 @@
 
 
 :root {
+  --min-main-height: 500px;
   --header-color: #0A306D;
   --header-text-color: #B0CAFF;
   --subhead-task-color: #134697;
@@ -629,12 +630,18 @@ a:hover{
 
   main{
     position: relative;
+    min-height: var(--min-main-height);
   }
+
   #projects-sidebar{
     position: absolute;
     right: 0;
     height: 100%;
     width: 60%;
+  }
+
+  #current-project{
+    height: fit-content;
   }
   nav{
     z-index: 3;
