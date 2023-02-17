@@ -56,6 +56,7 @@ export default function SelectedProject() {
       <div className="project-tasks-container flexbox">
         <TaskList />
       </div>
+      {taskFormDisplayed ? formComponent : null}
       {selectedProjectCopy ? (
         <button
           title="Create a new task"
@@ -70,7 +71,7 @@ export default function SelectedProject() {
           New Task
         </button>
       ) : null}
-      {taskFormDisplayed ? formComponent : null}
+      
     </div>
   );
 }

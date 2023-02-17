@@ -663,9 +663,38 @@ a:hover{
 
 }
 
+/* new task from response */
+@media(max-width: 740px){
+  .input-wrapper-new-task{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .input-wrapper-new-task label,input{
+    text-align: left;
+    margin: 10px 10px;
+  }
+
+  input{
+    height: 1.7rem;
+    font-size: 1.5rem;
+    width: 200px;
+  }
+
+  .task-info-textarea textarea{
+    height: 80px;
+    width: 200px;
+    font-size: 1.2rem;
+  }
+}
 
 /* small screens */
 @media(max-width: 600px){
+  main{
+    min-width: 420px;
+  }
   
 
   .task-info-container{
